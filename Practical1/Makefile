@@ -1,42 +1,15 @@
-# Compiler and flags for C++98
-CXX = g++
-CXXFLAGS = -Wall -g -std=c++98
+main: main.o
+	 g++ main.o -o main
 
-# Executable name
-TARGET = main
+main.o: main.cpp
+	 g++ -c main.cpp
 
-# Source files
-SRCS = \
-    Canvas.cpp \
-    Shape.cpp \
-    Rectangle.cpp \
-    Square.cpp \
-    Textbox.cpp \
-    ShapeFactory.cpp \
-    RectangleFactory.cpp \
-    SquareFactory.cpp \
-    TextboxFactory.cpp \
-    ExportCanvas.cpp \
-    PNGExporter.cpp \
-    PDFExporter.cpp \
-    Memento.cpp \
-    CareTaker.cpp \
-    main.cpp
+run:
+	 ./main
 
-# Object files (replace .cpp with .o)
-OBJS = $(SRCS:.cpp=.o)
-
-# Default target
-all: $(TARGET)
-
-# Link step
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Compile step
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean up build artifacts
 clean:
-	rm -f $(OBJS) $(TARGET)
+	 rm -f *.o main
+
+valgrind:
+	 valgrind --leak-check=full ./main
+
