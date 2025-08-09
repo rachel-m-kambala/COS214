@@ -14,12 +14,12 @@
 
 class Rectangle : public Shape{
     public:
-        Rectangle(int length, int width, string colour, int position_x, int position_y);
+        Rectangle(int length, int width, std::string colour, int position_x, int position_y);
         Shape* clone();
     private:
         int length;
         int width;
-        string colour;
+        std::string colour;
         int position_x;
         int position_y;
 }
