@@ -10,4 +10,20 @@
 #include <map>
 #include <list>
 
+#include "Memento.h"
+
+class Caretaker {
+   public:
+        CareTaker(int c = 100);
+        ~CareTaker();
+        
+        void addMemento(Memento* m);
+        Memento* getLastMemento();
+   
+    private:
+        Memento** history;
+        int count;
+        int capacity;
+};
+
 #endif

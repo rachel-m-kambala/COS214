@@ -10,9 +10,18 @@
 #include <map>
 #include <list>
 
+#include "Shape.h"
+
 class Memento{
     public:
-        Memento(Shape* elements);
-}
+        Memento(Shape** shapes, int count);
+        ~Memento();
+        Shape** getState() const;
+        int getCount() const;
+    
+    private:
+        Shape** shapes;
+        int count;
+};
 
 #endif

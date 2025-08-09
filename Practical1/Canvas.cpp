@@ -109,3 +109,22 @@ void Canvas::display() {
 int Canvas::getShapeCount(){
     return count;
 }
+
+    Memento* Canvas::captureCurrent() {
+        return new Memento(shapes, count);
+    }
+
+    void Canvas::undoAction(Memento* prev) {
+        // Delete current shapes
+        for (int i = 0; i < count; i++) {
+                    delete shapes[i];
+        }
+        delete [] shapes;
+
+        // Restore shapes from Memento (deep copy using clone)
+        count = prev->getCount();
+        shapes = new Shape*[count];
+        for (int i = 0; i < count; i++) {
+            shapes[i] = prev->getState()[i]->clone();
+        }
+    }
