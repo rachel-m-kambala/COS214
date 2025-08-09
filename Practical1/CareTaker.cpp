@@ -1,38 +1,27 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
 #include "CareTaker.h"
 
-CareTaker::CareTaker(int c) : count(0), capacity(c){
+CareTaker::CareTaker(int capacity) {
+    this->capacity = capacity;
+    size = 0;
     history = new Memento*[capacity];
 }
 
-CareTaker::~CareTaker(){
-    for (int i = 0; i < count; i++){
+CareTaker::~CareTaker() {
+    for (int i = 0; i < size; i++) {
         delete history[i];
     }
     delete[] history;
 }
 
-void CareTaker::addMemento(Memento* m){
-    if(count < capacity){
-        history[count++] = m;
-    } else{
-        Memento** newHistory = new Memento*[capacity * 2];
-        for(int i = 0; i < count; i++){
-            newHistory[i] = history[i];
-        }
-        delete[] history;
-        history = newHistory;
-        capacity *= 2;
-
-        history[count++] = m;
+void CareTaker::addMemento(Memento* m) {
+    if (size < capacity) {
+        history[size++] = m;
     }
 }
 
-Memento* CareTaker::getLastMemento(){
-    if(count > 0){
-        return history[--count];
+Memento* CareTaker::getMemento(int index) {
+    if (index >= 0 && index < size) {
+        return history[index];
     }
-    return NULL;
+    return 0;
 }

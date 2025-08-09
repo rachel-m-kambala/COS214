@@ -22,6 +22,19 @@ int main() {
 
     std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
 
+    
+    std::cout << "\nSaving current state..." << std::endl;
+    Memento* savedState = canvas.captureCurrent();
+
+    std::cout << "Removing last shape..." << std::endl;
+    canvas.removeLastShape();  
+    canvas.display();
+
+    std::cout << "Restoring saved state..." << std::endl;
+    canvas.undoAction(savedState);
+    canvas.display();
+   
+
     delete rectFactory;
     delete squareFactory;
     delete textboxFactory;
