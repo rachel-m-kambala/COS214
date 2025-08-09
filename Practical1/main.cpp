@@ -3,6 +3,8 @@
 #include "RectangleFactory.h"
 #include "SquareFactory.h"
 #include "TextboxFactory.h"
+#include "ShapeFactory.h"
+#include "Memento.h"
 
 int main() {
     Canvas canvas;
