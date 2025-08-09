@@ -3,13 +3,8 @@
 #include "RectangleFactory.h"
 #include "SquareFactory.h"
 #include "TextboxFactory.h"
-<<<<<<< HEAD
-#include "Memento.h"
-#include "CareTaker.h"
-=======
 #include "ShapeFactory.h"
 #include "Memento.h"
->>>>>>> 1dbcb02f2b478570bbdf5359c744226576525472
 
 int main() {
     Canvas canvas;
@@ -20,23 +15,27 @@ int main() {
     
     std::cout << "Creating shapes..." << std::endl;
     canvas.addShape(rectFactory->createShape());
-    caretaker.addMemento(canvas.captureCurrent());
-
     canvas.addShape(squareFactory->createShape());
-    caretaker.addMemento(canvas.captureCurrent());
-
     canvas.addShape(textboxFactory->createShape());
-    caretaker.addMemento(canvas.captureCurrent());
 
-    std::cout << "--- Current Canvas ---" << std::endl;
     canvas.display();
 
     std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
 
-    std::cout << "--- Canvas After Undo ---" << std::endl;
-    canvas.display();
-    std::cout << "Number of shapes: " << canvas.getShapeCount() << std::endl;
+    std::cout <<  std::endl;
+    std::cout << "\nSaving current state..." << std::endl;
+    Memento* savedState = canvas.captureCurrent();
 
+    std::cout <<  std::endl;
+    std::cout << "Removing last shape" << std::endl;
+    canvas.removeLastShape();  
+    canvas.display();
+
+    std::cout << "Restoring saved state" << std::endl;
+    canvas.undoAction(savedState);
+    canvas.display();
+   
+    std::cout << "Number of shapes after restoration: " << canvas.getShapeCount() << std::endl;
     delete rectFactory;
     delete squareFactory;
     delete textboxFactory;

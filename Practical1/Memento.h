@@ -1,27 +1,14 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
-#ifndef MEMENTO.h
-#define MEMENTO.h
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+#ifndef MEMENTO_H
+#define MEMENTO_H
 
 #include "Shape.h"
 
-class Memento{
-    public:
-        Memento(Shape** shapes, int count);
-        ~Memento();
-        Shape** getState() const;
-        int getCount() const;
-    
-    private:
-        Shape** shapes;
-        int count;
+class Memento {
+private:
+    Shape** shapes; 
+public:
+    Memento(Shape** elements, int count);
+    Shape** getState();
 };
 
 #endif

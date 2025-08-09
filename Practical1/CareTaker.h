@@ -1,18 +1,10 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
-#ifndef CARETAKER.h
-#define CARETAKER.h
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+#ifndef CARETAKER_H
+#define CARETAKER_H
 
 #include "Memento.h"
 
 class CareTaker {
+<<<<<<< HEAD
    public:
         CareTaker(int c = 100);
         ~CareTaker();
@@ -24,6 +16,17 @@ class CareTaker {
         Memento** history;
         int count;
         int capacity;
+=======
+private:
+    Memento** history;
+    int size;
+    int capacity;
+public:
+    CareTaker(int capacity);
+    ~CareTaker();
+    void addMemento(Memento* m);
+    Memento* getMemento(int index);
+>>>>>>> 473863fd1baead4c5373a4fc649f04919ad01bb9
 };
 
 #endif

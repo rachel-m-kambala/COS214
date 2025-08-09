@@ -21,6 +21,7 @@ public:
     void display();
     void undoAction(Memento* prev);
     Memento* captureCurrent();
+    void removeLastShape();
 };
 
 #endif

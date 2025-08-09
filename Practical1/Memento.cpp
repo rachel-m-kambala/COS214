@@ -1,22 +1,12 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
 #include "Memento.h"
 
-Memento::Memento(Shape** shapes, int count) : count(count){
-    this->shapes = new Shape*[count];
-    for(int i = 0; i < count; i++){
-        this->shapes[i] = shapes[i]->clone();
+Memento::Memento(Shape** elements, int count) {
+    shapes = new Shape*[count];
+    for (int i = 0; i < count; i++) {
+        shapes[i] = elements[i]; // shallow copy
     }
 }
 
-Memento::~Memento(){
-    for(int i = 0; i < count; i++){
-        delete shapes[i];
-    }
-    delete[] shapes;
-}
-
-Shape** Memento::getState() const{
+Shape** Memento::getState() {
     return shapes;
 }
