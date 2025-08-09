@@ -10,4 +10,16 @@
 #include <map>
 #include <list>
 
+class Rectangle{
+    public:
+        Rectangle(int length, int width, string colour, int position_x, int position_y);
+        Shape* clone();
+    private:
+        int length;
+        int width;
+        string colour;
+        int position_x;
+        int position_y;
+}
+
 #endif
