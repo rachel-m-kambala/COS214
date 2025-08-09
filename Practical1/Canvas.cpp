@@ -36,16 +36,35 @@ int Canvas::getShapeCount(){
     return count;
 }
 
-  Memento* Canvas::captureCurrent() {
-    return new Memento(shapes, count); 
+Memento* Canvas::captureCurrent() {
+    Shape** shapesCopy = new Shape*[count];
+    for (int i = 0; i < count; i++) {
+        shapesCopy[i] = shapes[i]->clone();
+    }
+    return new Memento(shapesCopy, count);
 }
 
-void Canvas::undoAction(Memento* prev) {
-    if (prev != NULL) {
-        shapes = prev->getState();
-        // remove: count = prev->getCount();
+
+
+
+void Canvas::undoAction(Memento* prev, int savedCount) {
+    for (int i = 0; i < count; i++) {
+        delete shapes[i];
+    }
+    delete[] shapes;
+
+    count = savedCount;
+    shapes = new Shape*[count];
+    Shape** savedShapes = prev->getState();
+
+    for (int i = 0; i < count; i++) {
+        shapes[i] = savedShapes[i]->clone();  // deep copy of each shape
     }
 }
+
+
+
+
 
 void Canvas::removeLastShape() {
     if (count > 0) {

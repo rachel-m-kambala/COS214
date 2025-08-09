@@ -11,6 +11,7 @@ class Canvas {
     Shape** shapes;
     int capacity;
     int count;
+    int savedCount;
 
 public:
     Canvas(int capacity = 100);
@@ -19,7 +20,7 @@ public:
     int getShapeCount();
     void addShape(Shape* shape);
     void display();
-    void undoAction(Memento* prev);
+    void undoAction(Memento* prev, int savedCount);
     Memento* captureCurrent();
     void removeLastShape();
 };

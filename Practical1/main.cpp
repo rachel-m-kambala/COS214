@@ -6,6 +6,8 @@
 #include "ShapeFactory.h"
 #include "Memento.h"
 
+
+
 int main() {
     Canvas canvas;
 
@@ -23,19 +25,28 @@ int main() {
     std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
 
     std::cout <<  std::endl;
-    std::cout << "\nSaving current state..." << std::endl;
+    
+    std::cout << "\nMemento Test" << std::endl;
     Memento* savedState = canvas.captureCurrent();
+    int savedCount = canvas.getShapeCount();
 
-    std::cout <<  std::endl;
+    std::cout << std::endl;
     std::cout << "Removing last shape" << std::endl;
-    canvas.removeLastShape();  
+    canvas.removeLastShape();
     canvas.display();
 
     std::cout << "Restoring saved state" << std::endl;
-    canvas.undoAction(savedState);
+    canvas.undoAction(savedState, savedCount);
     canvas.display();
+
    
     std::cout << "Number of shapes after restoration: " << canvas.getShapeCount() << std::endl;
+
+   
+
+    delete savedState; 
+
+
     delete rectFactory;
     delete squareFactory;
     delete textboxFactory;
