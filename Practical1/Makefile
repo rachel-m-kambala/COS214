@@ -1,8 +1,11 @@
-main: main.o
-	 g++ main.o -o main
+main: main.o canvas.o
+	 g++ main.o canvas.o -o main
 
-main.o: main.cpp
+main.o: main.cpp canvas.h 
 	 g++ -c main.cpp
+
+canvas.o: canvas.cpp canvas.h 
+	 g++ -c canvas.cpp
 
 run:
 	 ./main
