@@ -5,6 +5,9 @@
 #include "TextboxFactory.h"
 #include "ShapeFactory.h"
 #include "Memento.h"
+#include "PDFExporter.h"
+#include "PNGExporter.h"
+#include "ExportCanvas.h"
 
 
 
@@ -50,6 +53,14 @@ int main() {
     delete rectFactory;
     delete squareFactory;
     delete textboxFactory;
+
+    std::cout << "\nTesting PDFExporter:" << std::endl;
+    PDFExporter pdfExporter(&canvas);
+    pdfExporter.exportCanvas();
+
+    std::cout << "\nTesting PNGExporter:" << std::endl;
+    PNGExporter pngExporter(&canvas);
+    pngExporter.exportCanvas();
 
     return 0;
 }

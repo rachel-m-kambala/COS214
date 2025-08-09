@@ -1,24 +1,24 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
-#ifndef EXPORTCANVAS.h
-#define EXPORTCANVAS.h
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+#ifndef EXPORTCANVAS_H
+#define EXPORTCANVAS_H
 
 #include "Canvas.h"
 
-class ExportCanvas{
-    public:
-        void export();
-    private:
-        Canvas* canvas;
-        void prepareCanvas();
-        void renderElements();
-        virtual void saveToFile() = 0;
+class ExportCanvas {
+private:
+    Canvas* canvas;
+
+public:
+    ExportCanvas(Canvas* c);
+    virtual ~ExportCanvas();
+
+    void exportCanvas();
+
+protected:
+    virtual void prepareCanvas() = 0;
+    virtual void renderElements() = 0;
+
+private:
+    virtual void saveToFile() = 0;
 };
+
 #endif

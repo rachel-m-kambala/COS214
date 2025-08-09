@@ -1,19 +1,19 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
-#ifndef PDFEXPORTER.h
-#define PDFEXPORTER.h
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+#ifndef PDFEXPORTER_H
+#define PDFEXPORTER_H
 
 #include "ExportCanvas.h"
 
-class PDFExporter{
-    void saveToFile();
-}
+class PDFExporter : public ExportCanvas {
+public:
+    PDFExporter(Canvas* c) : ExportCanvas(c) {}
+    ~PDFExporter() {}
 
-#endif
+private:
+    void saveToFile() override;
+
+protected:
+    void prepareCanvas() override;
+    void renderElements() override;
+};
+
+#endif // PDFEXPORTER_H

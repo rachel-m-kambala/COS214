@@ -1,19 +1,19 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
-
-#ifndef PNGEXPORTER.h
-#define PNGEXPORTER.h
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+#ifndef PNGEXPORTER_H
+#define PNGEXPORTER_H
 
 #include "ExportCanvas.h"
 
-class PNGExporter{
-    void saveToFile();
-}
+class PNGExporter : public ExportCanvas {
+public:
+    PNGExporter(Canvas* c) : ExportCanvas(c) {}
+    ~PNGExporter() {}
 
-#endif
+private:
+    void saveToFile() override;
+
+protected:
+    void prepareCanvas() override;
+    void renderElements() override;
+};
+
+#endif // PNGEXPORTER_H
