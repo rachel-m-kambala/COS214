@@ -20,7 +20,3 @@ Memento::~Memento(){
 Shape** Memento::getState() const{
     return shapes;
 }
-
-int Memento::getCount() const{
-    return count;
-}

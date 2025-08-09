@@ -23,7 +23,7 @@ int main() {
     canvas.addShape(textboxFactory->createShape());
     caretaker.addMemento(canvas.captureCurrent());
 
-    std::cout >> "--- Current Canvas ---" << std::endl;
+    std::cout << "--- Current Canvas ---" << std::endl;
     canvas.display();
 
     std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
