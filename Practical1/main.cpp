@@ -1,10 +1,28 @@
 #include <iostream>
 #include "Canvas.h"
-
+#include "RectangleFactory.h"
+#include "SquareFactory.h"
+#include "TextboxFactory.h"
 
 int main() {
-    std::cout << "Canvas Application\n";
-    Canvas myCanvas;  
-    myCanvas.display();
+    Canvas canvas;
+
+    ShapeFactory* rectFactory = new RectangleFactory();
+    ShapeFactory* squareFactory = new SquareFactory();
+    ShapeFactory* textboxFactory = new TextboxFactory();
+    
+    std::cout << "Creating shapes..." << std::endl;
+    canvas.addShape(rectFactory->createShape());
+    canvas.addShape(squareFactory->createShape());
+    canvas.addShape(textboxFactory->createShape());
+
+    canvas.display();
+
+    std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
+
+    delete rectFactory;
+    delete squareFactory;
+    delete textboxFactory;
+
     return 0;
 }

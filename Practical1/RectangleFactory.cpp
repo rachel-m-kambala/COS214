@@ -1,12 +1,10 @@
 #include "RectangleFactory.h"
 #include "Rectangle.h"
 
-RectangleFactory::~RectangleFactory() {}
-
 Shape* RectangleFactory::createShape() {
-    return new Rectangle();
+    return new Rectangle(10, 20, "red", 0, 0);
 }
 
-std::string RectangleFactory::toString() const {
+std::string RectangleFactory::toString() {
     return "Rectangle";
 }

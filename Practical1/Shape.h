@@ -18,6 +18,8 @@ public:
 
     virtual ~Shape();
 
+    virtual void draw() = 0;
+
  
     int getLength() const;
     int getWidth() const;

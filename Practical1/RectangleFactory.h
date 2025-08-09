@@ -2,15 +2,12 @@
 #define RECTANGLEFACTORY_H
 
 #include "ShapeFactory.h"
-#include <string>
 
 class RectangleFactory : public ShapeFactory {
 public:
-    virtual ~RectangleFactory();
-
-    virtual Shape* createShape();
-
-    std::string toString() const;
+    Shape* createShape() override;
+    std::string toString() override;
 };
 
-#endif 
+#endif
+

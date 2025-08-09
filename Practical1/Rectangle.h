@@ -1,25 +1,15 @@
-//Mukaji Mweni Rachel Kambala u23559129
-//Jerusha Thaver u23686376
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
 
-#ifndef RECTANGLE.h
-#define RECTANGLE.h
+#include "Shape.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
+class Rectangle : public Shape {
+public:
+    Rectangle();
+    Rectangle(int length, int width, const std::string& colour, int positionX, int positionY);
 
-class Rectangle{
-    public:
-        Rectangle(int length, int width, string colour, int position_x, int position_y);
-        Shape* clone();
-    private:
-        int length;
-        int width;
-        string colour;
-        int position_x;
-        int position_y;
-}
+    void draw() override;
+    Shape* clone() const override;
+};
 
 #endif
