@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 main: main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o  Square.o Rectangle.o Textbox.o
+=======
+main: main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o  Square.o Rectangle.o Textbox.o Memento.o CareTaker.o
+>>>>>>> 1dbcb02f2b478570bbdf5359c744226576525472
 	 g++ main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o -o main
 
 main.o: main.cpp Canvas.h 
@@ -31,7 +35,11 @@ Rectangle.o: Rectangle.cpp Rectangle.h Shape.h
 Textbox.o: Textbox.cpp Textbox.h Shape.h
 	 g++ -c Textbox.cpp
 
+<<<<<<< HEAD
 Memento.o: Memento.cpp Memento.h Shape.h
+=======
+Memento.o: Memento.cpp Memento.h
+>>>>>>> 1dbcb02f2b478570bbdf5359c744226576525472
 	 g++ -c Memento.cpp
 
 CareTaker.o: CareTaker.cpp CareTaker.h Memento.h
