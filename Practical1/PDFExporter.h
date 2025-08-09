@@ -10,4 +10,10 @@
 #include <map>
 #include <list>
 
+#include "ExportCanvas.h"
+
+class PDFExporter{
+    void saveToFile();
+}
+
 #endif
