@@ -27,7 +27,7 @@ void Canvas::display() {
     for (int i = 0; i < count; i++) {
         std::cout << "Shape " << i + 1 << ": ";
         shapes[i]->draw();
-        std::cout <<  std::endl;
+        // std::cout <<  std::endl;
     }
     
 }
@@ -37,7 +37,7 @@ int Canvas::getShapeCount(){
 }
 
   Memento* Canvas::captureCurrent() {
-    return new Memento(shapes, count); // shapeCount: number of shapes in canvas
+    return new Memento(shapes, count); 
 }
 
 void Canvas::undoAction(Memento* prev) {
