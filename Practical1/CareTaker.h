@@ -12,7 +12,7 @@
 
 #include "Memento.h"
 
-class Caretaker {
+class CareTaker {
    public:
         CareTaker(int c = 100);
         ~CareTaker();
