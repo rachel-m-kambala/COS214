@@ -42,7 +42,7 @@ class Canvas {
     int count;
 
 public:
-    Canvas(int capacity = 10);
+    Canvas(int capacity = 100);
     ~Canvas();
 
     int getShapeCount();

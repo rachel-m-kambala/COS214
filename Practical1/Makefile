@@ -40,3 +40,21 @@ clean:
 valgrind:
 	 valgrind --leak-check=full ./main
 
+coverage_build:
+	g++ --coverage -g -O0 -c main.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp
+
+coverage_link:
+	g++ --coverage -g -O0 main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o -o main
+
+coverage: clean coverage_build coverage_link
+
+coverage_run:
+	./main
+
+coverage_report:
+	gcov -f -m -r main.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp
+
+coverage_all: coverage coverage_run coverage_report
+
+coverage_clean:
+	rm -f *.gcda *.gcno *.gcov
