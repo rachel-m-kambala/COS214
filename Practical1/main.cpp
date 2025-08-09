@@ -3,6 +3,8 @@
 #include "RectangleFactory.h"
 #include "SquareFactory.h"
 #include "TextboxFactory.h"
+#include "Memento.h"
+#include "CareTaker.h"
 
 int main() {
     Canvas canvas;
@@ -13,12 +15,22 @@ int main() {
     
     std::cout << "Creating shapes..." << std::endl;
     canvas.addShape(rectFactory->createShape());
-    canvas.addShape(squareFactory->createShape());
-    canvas.addShape(textboxFactory->createShape());
+    caretaker.addMemento(canvas.captureCurrent());
 
+    canvas.addShape(squareFactory->createShape());
+    caretaker.addMemento(canvas.captureCurrent());
+
+    canvas.addShape(textboxFactory->createShape());
+    caretaker.addMemento(canvas.captureCurrent());
+
+    std::cout >> "--- Current Canvas ---" << std::endl;
     canvas.display();
 
     std::cout << "Number of shapes:" << canvas.getShapeCount() << std::endl;
+
+    std::cout << "--- Canvas After Undo ---" << std::endl;
+    canvas.display();
+    std::cout << "Number of shapes: " << canvas.getShapeCount() << std::endl;
 
     delete rectFactory;
     delete squareFactory;

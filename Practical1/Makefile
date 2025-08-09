@@ -1,5 +1,5 @@
 main: main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o  Square.o Rectangle.o Textbox.o
-	 g++ main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o -o main
+	 g++ main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o -o main
 
 main.o: main.cpp Canvas.h 
 	 g++ -c main.cpp
@@ -30,6 +30,12 @@ Rectangle.o: Rectangle.cpp Rectangle.h Shape.h
 
 Textbox.o: Textbox.cpp Textbox.h Shape.h
 	 g++ -c Textbox.cpp
+
+Memento.o: Memento.cpp Memento.h Shape.h
+	 g++ -c Memento.cpp
+
+CareTaker.o: CareTaker.cpp CareTaker.h Memento.h
+	 g++ -c CareTaker.cpp
 
 run:
 	 ./main
