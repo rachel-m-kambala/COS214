@@ -10,7 +10,9 @@
 #include <map>
 #include <list>
 
-class Rectangle{
+#include "Shape.h"
+
+class Rectangle : public Shape{
     public:
         Rectangle(int length, int width, string colour, int position_x, int position_y);
         Shape* clone();

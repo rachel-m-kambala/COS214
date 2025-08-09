@@ -10,4 +10,9 @@
 #include <map>
 #include <list>
 
+class Memento{
+    public:
+        Memento(Shape* elements);
+}
+
 #endif

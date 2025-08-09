@@ -10,4 +10,15 @@
 #include <map>
 #include <list>
 
+#include "Canvas.h"
+
+class ExportCanvas{
+    public:
+        void export();
+    private:
+        Canvas* canvas;
+        void prepareCanvas();
+        void renderElements();
+        virtual void saveToFile() = 0;
+};
 #endif
