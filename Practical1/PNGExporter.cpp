@@ -9,7 +9,7 @@ void PNGExporter::prepareCanvas() {
 
 void PNGExporter::renderElements() {
     std::cout << "Rendering elements for PNG export." << std::endl;
-    std::cout << getShapeCount() << " shapes being rendered as PNG..." << std::endl;
+    //std::cout << getShapeCount() << " shapes being rendered as PNG..." << std::endl;
 }
 
 void PNGExporter::saveToFile() {
