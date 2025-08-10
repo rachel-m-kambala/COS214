@@ -53,7 +53,7 @@ void Shape::setPositionY(int y) {
     this->positionY = y;
 }
 
-Shape* Shape::clone() {
+Shape* Shape::clone() const {
     
     return NULL;
 }
