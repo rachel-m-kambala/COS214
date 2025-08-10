@@ -21,11 +21,11 @@ public:
     virtual void draw() = 0;
 
  
-    int getLength() const;
-    int getWidth() const;
-    std::string getColour() const;
-    int getPositionX() const;
-    int getPositionY() const;
+    int getLength() ;
+    int getWidth() ;
+    std::string getColour() ;
+    int getPositionX() ;
+    int getPositionY() ;
 
 
     void setLength(int length);

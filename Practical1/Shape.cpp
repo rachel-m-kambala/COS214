@@ -12,23 +12,23 @@ Shape::Shape(int length, int width, const std::string& colour, int positionX, in
 
 Shape::~Shape() {}
 
-int Shape::getLength() const {
+int Shape::getLength()  {
     return length;
 }
 
-int Shape::getWidth() const {
+int Shape::getWidth()  {
     return width;
 }
 
-std::string Shape::getColour() const {
+std::string Shape::getColour() {
     return colour;
 }
 
-int Shape::getPositionX() const {
+int Shape::getPositionX() {
     return positionX;
 }
 
-int Shape::getPositionY() const {
+int Shape::getPositionY() {
     return positionY;
 }
 
@@ -53,7 +53,7 @@ void Shape::setPositionY(int y) {
     this->positionY = y;
 }
 
-Shape* Shape::clone() const {
+Shape* Shape::clone() {
     
     return NULL;
 }
