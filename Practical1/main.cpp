@@ -56,11 +56,11 @@ int main() {
 
     std::cout << "\nTesting PDFExporter:" << std::endl;
     PDFExporter pdfExporter(&canvas);
-    pdfExporter.exportCanvas();
+    pdfExporter.exportToFile();
 
     std::cout << "\nTesting PNGExporter:" << std::endl;
     PNGExporter pngExporter(&canvas);
-    pngExporter.exportCanvas();
+    pngExporter.exportToFile();
 
     return 0;
 }
