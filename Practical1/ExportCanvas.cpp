@@ -4,7 +4,7 @@ ExportCanvas::ExportCanvas(Canvas* c) : canvas(c) {}
 
 ExportCanvas::~ExportCanvas() {}
 
-void ExportCanvas::exportCanvas() {
+void ExportCanvas::exportToFile() {
     prepareCanvas();
     renderElements();
     saveToFile();

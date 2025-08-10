@@ -11,7 +11,7 @@ public:
     ExportCanvas(Canvas* c);
     virtual ~ExportCanvas();
 
-    void exportCanvas();
+    void exportToFile();
 
 protected:
     virtual void prepareCanvas() = 0;
