@@ -11,6 +11,6 @@ void Rectangle::draw() {
               << " at (" << getPositionX() << "," << getPositionY() << ") with colour " << getColour() << std::endl;
 }
 
-Shape* Rectangle::clone() const {
+Shape* Rectangle::clone(){
     return new Rectangle(*this);
 }

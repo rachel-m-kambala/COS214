@@ -11,6 +11,6 @@ void Square::draw() {
               << " at (" << getPositionX() << "," << getPositionY() << ") with colour " << getColour() << std::endl;
 }
 
-Shape* Square::clone() const {
+Shape* Square::clone()  {
     return new Square(*this);
 }

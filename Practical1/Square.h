@@ -12,7 +12,7 @@ public:
     Square(int size, const std::string& colour, int positionX, int positionY);
 
     void draw() override;
-    Shape* clone() const override;
+    Shape* clone() override;
 };
 
 #endif

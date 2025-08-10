@@ -15,7 +15,7 @@ public:
     Textbox(int length, int width, const std::string& colour, int positionX, int positionY, const std::string& text);
 
     void draw() override;
-    Shape* clone() const override;
+    Shape* clone()  override;
 
     std::string getText() const;
     void setText(const std::string& text);

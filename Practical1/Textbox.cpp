@@ -12,7 +12,7 @@ void Textbox::draw() {
               << " containing text: " << text << std::endl;
 }
 
-Shape* Textbox::clone() const {
+Shape* Textbox::clone() {
     return new Textbox(*this);
 }
 
