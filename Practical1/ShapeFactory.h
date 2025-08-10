@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Shape.h"
-
+//ShapeFactory is an abstract class with an abstract createShape() & toString() method.
 class ShapeFactory {
 public:
     virtual ~ShapeFactory();

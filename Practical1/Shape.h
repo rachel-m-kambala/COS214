@@ -35,6 +35,7 @@ public:
     void setPositionY(int y);
 
     virtual Shape* clone() = 0;
+
 };
 
 #endif 

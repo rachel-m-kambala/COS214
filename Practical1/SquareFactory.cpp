@@ -6,5 +6,5 @@ Shape* SquareFactory::createShape() {
 }
 
 std::string SquareFactory::toString() {
-    return "Square";
+    return "SQUARE";
 }

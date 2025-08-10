@@ -2,11 +2,11 @@
 //Jerusha Thaver u23686376
 #include "Shape.h"
 
-// Default constructor
+
 Shape::Shape()
     : length(0), width(0), colour("none"), positionX(0), positionY(0) {}
 
-// Parameterized constructor
+
 Shape::Shape(int length, int width, const std::string& colour, int positionX, int positionY)
     : length(length), width(width), colour(colour), positionX(positionX), positionY(positionY) {}
 
@@ -32,7 +32,7 @@ int Shape::getPositionY() {
     return positionY;
 }
 
-// Setters
+
 void Shape::setLength(int length) {
     this->length = length;
 }
@@ -53,7 +53,3 @@ void Shape::setPositionY(int y) {
     this->positionY = y;
 }
 
-Shape* Shape::clone() {
-    
-    return NULL;
-}
