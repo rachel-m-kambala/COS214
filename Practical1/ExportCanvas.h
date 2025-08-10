@@ -13,11 +13,9 @@ public:
 
     void exportToFile();
 
-protected:
+private:
     virtual void prepareCanvas() = 0;
     virtual void renderElements() = 0;
-
-private:
     virtual void saveToFile() = 0;
 };
 
