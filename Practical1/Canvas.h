@@ -19,13 +19,11 @@ public:
     Memento* captureCurrent();
     void removeLastShape();
 
-protected:
-    int count;
-
 private:
     Shape** shapes;
     int capacity;
     int savedCount;
+    int count;
 };
 
 #endif
