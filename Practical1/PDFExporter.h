@@ -5,7 +5,7 @@
 
 class PDFExporter : public ExportCanvas {
 public:
-    PDFExporter(Canvas* c) : ExportCanvas(c) {}
+    PDFExporter(Canvas* c);
     ~PDFExporter() {}
 
 private:

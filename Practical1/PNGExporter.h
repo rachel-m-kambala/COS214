@@ -5,7 +5,7 @@
 
 class PNGExporter : public ExportCanvas {
 public:
-    PNGExporter(Canvas* c) : ExportCanvas(c) {}
+    PNGExporter(Canvas* c);
     ~PNGExporter() {}
 
 private:
