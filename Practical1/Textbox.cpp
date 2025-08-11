@@ -10,6 +10,13 @@ void Textbox::draw() {
     std::cout << "Drawing Textbox of size " << getLength() << "x" << getWidth()
               << " at (" << getPositionX() << "," << getPositionY() << ") with colour " << getColour()
               << " containing text: " << text << std::endl;
+    std::cout << "-----------------------------"  << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|          " << text << "       |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "-----------------------------"  << std::endl;
 }
 
 Shape* Textbox::clone() {

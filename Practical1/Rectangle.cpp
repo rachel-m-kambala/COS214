@@ -9,6 +9,13 @@ Rectangle::Rectangle(int length, int width, const std::string& colour, int posit
 void Rectangle::draw() {
     std::cout << "Drawing Rectangle of size " << getLength() << "x" << getWidth()
               << " at (" << getPositionX() << "," << getPositionY() << ") with colour " << getColour() << std::endl;
+    std::cout << "-----------------------------"  << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "|                            |" << std::endl;
+    std::cout << "-----------------------------"  << std::endl;         
 }
 
 Shape* Rectangle::clone(){
