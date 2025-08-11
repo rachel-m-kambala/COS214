@@ -8,6 +8,11 @@
 #include "Memento.h"
 
 class Canvas {
+private:
+    Shape** shapes;
+    int capacity;
+    int savedCount;
+    int count;
 public:
     Canvas(int capacity = 100);
     ~Canvas();
@@ -19,11 +24,6 @@ public:
     Memento* captureCurrent();
     void removeLastShape();
 
-private:
-    Shape** shapes;
-    int capacity;
-    int savedCount;
-    int count;
 };
 
 #endif
