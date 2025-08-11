@@ -14,10 +14,10 @@
 int main() {
     Canvas canvas;
 
-    ShapeFactory* rectFactory = new RectangleFactory();
-    ShapeFactory* squareFactory = new SquareFactory();
-    ShapeFactory* textboxFactory = new TextboxFactory();
-    
+    RectangleFactory* rectFactory = new RectangleFactory();
+    SquareFactory* squareFactory = new SquareFactory();
+    TextboxFactory* textboxFactory = new TextboxFactory();
+
     std::cout << "Creating shapes..." << std::endl;
     canvas.addShape(rectFactory->createShape());
     canvas.addShape(squareFactory->createShape());
@@ -42,14 +42,17 @@ int main() {
     canvas.undoAction(savedState, savedCount);
     canvas.display();
 
-   
-    std::cout << "Number of shapes after restoration: " << canvas.getShapeCount() << std::endl;
+    // After restoring, add another square shape
+       std::cout <<  std::endl;
+    std::cout << "Adding another square " << std::endl;
+    canvas.addShape(squareFactory->createShape());
+    canvas.display();
 
-   
+    std::cout << "Number of shapes after adding a new square: " << canvas.getShapeCount() << std::endl;
 
-    delete savedState; 
+    delete savedState;
 
-
+    // delete sqFactory; //
     delete rectFactory;
     delete squareFactory;
     delete textboxFactory;

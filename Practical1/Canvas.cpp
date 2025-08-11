@@ -48,17 +48,24 @@ Memento* Canvas::captureCurrent() {
 
 
 void Canvas::undoAction(Memento* prev, int savedCount) {
+  
     for (int i = 0; i < count; i++) {
         delete shapes[i];
     }
     delete[] shapes;
 
+    // IMPORTANT: keep capacity as it was, do NOT set to savedCount
+    // capacity remains the same as originally allocated
+
     count = savedCount;
-    shapes = new Shape*[count];
+
+    // Allocate new shapes array with original capacity (not savedCount)
+    shapes = new Shape*[capacity];
+
     Shape** savedShapes = prev->getState();
 
     for (int i = 0; i < count; i++) {
-        shapes[i] = savedShapes[i]->clone();  // deep copy of each shape
+        shapes[i] = savedShapes[i]->clone(); 
     }
 }
 
@@ -68,8 +75,10 @@ void Canvas::undoAction(Memento* prev, int savedCount) {
 
 void Canvas::removeLastShape() {
     if (count > 0) {
-        delete shapes[count - 1];
-        shapes[count - 1] = 0;
+        delete shapes[count - 1];   // delete the shape
         count--;
+    }
+    else {
+        std::cout << "No shapes to remove." << std::endl;
     }
 }

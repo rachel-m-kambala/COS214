@@ -7,6 +7,7 @@
 class ShapeFactory {
 public:
     virtual ~ShapeFactory();
+protected:
     virtual Shape* createShape() = 0;
     virtual std::string toString() = 0;
 };
