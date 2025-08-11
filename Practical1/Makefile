@@ -1,8 +1,8 @@
-main: main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o  Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o
-	 g++ main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o -o main
+TestingMain: TestingMain.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o  Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o
+	 g++ TestingMain.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o -o TestingMain
 
-main.o: main.cpp Canvas.h 
-	 g++ -c main.cpp
+TestingMain.o: TestingMain.cpp Canvas.h 
+	 g++ -c TestingMain.cpp
 
 Canvas.o: Canvas.cpp Canvas.h Shape.h
 	 g++ -c Canvas.cpp
@@ -47,27 +47,27 @@ PNGExporter.o: PNGExporter.cpp PNGExporter.h
 	 g++ -c PNGExporter.cpp
 
 run:
-	 ./main
+	 ./TestingMain
 
 clean:
-	 rm -f *.o main
+	 rm -f *.o TestingMain
 
 valgrind:
-	 valgrind --leak-check=full ./main
+	 valgrind --leak-check=full ./TestingMain
 
 coverage_build:
-	g++ --coverage -g -O0 -c main.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp Memento.cpp CareTaker.cpp ExportCanvas.cpp PDFExporter.cpp PNGExporter.cpp
+	g++ --coverage -g -O0 -c TestingMain.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp Memento.cpp CareTaker.cpp ExportCanvas.cpp PDFExporter.cpp PNGExporter.cpp
 
 coverage_link:
-	g++ --coverage -g -O0 main.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o -o main
+	g++ --coverage -g -O0 TestingMain.o Canvas.o Shape.o ShapeFactory.o RectangleFactory.o SquareFactory.o TextboxFactory.o Square.o Rectangle.o Textbox.o Memento.o CareTaker.o ExportCanvas.o PDFExporter.o PNGExporter.o -o TestingMain
 
 coverage: clean coverage_build coverage_link
 
 coverage_run:
-	./main
+	./TestingMain
 
 coverage_report:
-	gcov -f -m -r main.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp	Memento.cpp CareTaker.cpp ExportCanvas.cpp PDFExporter.cpp PNGExporter.cpp
+	gcov -f -m -r TestingMain.cpp Canvas.cpp Shape.cpp ShapeFactory.cpp RectangleFactory.cpp SquareFactory.cpp TextboxFactory.cpp Square.cpp Rectangle.cpp Textbox.cpp	Memento.cpp CareTaker.cpp ExportCanvas.cpp PDFExporter.cpp PNGExporter.cpp
 
 coverage_all: coverage coverage_run coverage_report
 
