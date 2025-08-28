@@ -36,6 +36,8 @@ int Canvas::getShapeCount(){
     return count;
 }
 
+/*creates a snapshot of the current canvas by creating a deep copy
+of all the shapes on the canvas and returning a Memento object of the copied shapes*/
 Memento* Canvas::captureCurrent() {
     Shape** shapesCopy = new Shape*[count];
     for (int i = 0; i < count; i++) {
@@ -46,7 +48,8 @@ Memento* Canvas::captureCurrent() {
 
 
 
-
+/*restores the canvas to the previous state by deleting all the shapes that
+are currently on  the canvas and recreates the canvas by creating a deep copy of the object in the memento*/
 void Canvas::undoAction(Memento* prev, int savedCount) {
   
     for (int i = 0; i < count; i++) {
@@ -60,6 +63,10 @@ void Canvas::undoAction(Memento* prev, int savedCount) {
     count = savedCount;
 
     // Allocate new shapes array with original capacity (not savedCount)
+    //We allocate the new array with the original capacity because capacity shows the maximum number of shapes the 
+    //canvas can hold. The canvas was designed with specific maximum capacity which is a structural property that
+    //should not change. And after undoing you'd most probably want to add more shapes, if we allocated the array
+    //with savedCount instead of capacity, we would be limiting the amount of shapes the canvas can hold.
     shapes = new Shape*[capacity];
 
     Shape** savedShapes = prev->getState();

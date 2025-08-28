@@ -4,6 +4,9 @@
 #include <string>
 #include "Shape.h"
 //ShapeFactory is an abstract class with an abstract createShape() & toString() method.
+/*Define how objects are created (but not what is created).
+
+Delegate the actual creation to subclasses.*/
 class ShapeFactory {
 public:
     virtual ~ShapeFactory();

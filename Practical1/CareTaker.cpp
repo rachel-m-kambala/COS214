@@ -1,5 +1,9 @@
 #include "CareTaker.h"
-
+/*the CareTaker manages the lifecycle of saved states.
+the Constructor prepares storage for a capacity of saved states
+the destructor safely deletes all saved states and the storage array to prevent memory leaks
+addMemento adds a new memento object if space is available
+getMemento() retrives a memento object by index*/
 CareTaker::CareTaker(int capacity) {
     this->capacity = capacity;
     size = 0;
