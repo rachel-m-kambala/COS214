@@ -4,11 +4,19 @@
 #ifndef STUFFEDCRUST_H
 #define STUFFEDCRUST_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
-#include "Pizza.h"
+#include "PizzaDecorator.h"
+
+class StuffedCrust : public PizzaDecorator {
+private:
+    double extraPrice;
+
+public:
+    StuffedCrust(Pizza* p, double cost = 3.5);
+    ~StuffedCrust();
+
+    double getPrice();
+    string getName();
+    void printPizza();
+};
 
 #endif
