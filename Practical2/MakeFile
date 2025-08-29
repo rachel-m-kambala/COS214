@@ -1,12 +1,16 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++11
-OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o
+OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o
 TARGET = pizza
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
+
+PizzaDecorator.o: PizzaDecorator.cpp PizzaDecorator.h Pizza.h
+	$(CXX) $(CXXFLAGS) -c PizzaDecorator.cpp
+
 
 main.o: main.cpp Pizza.h BasePizza.h ExtraCheese.h StuffedCrust.h Topping.h ToppingGroup.h
 	$(CXX) $(CXXFLAGS) -c main.cpp

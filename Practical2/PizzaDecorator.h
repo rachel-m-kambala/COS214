@@ -17,7 +17,6 @@ public:
     virtual ~PizzaDecorator();
 
     virtual double getPrice() override;
-    virtual std::string get
-
-
+    virtual std::string getName() override;
+};
 #endif
