@@ -4,11 +4,21 @@
 #ifndef TOPPINGGROUP_H
 #define TOPPINGGROUP_H
 
-#include <iostream>
-#include <string>
+#include "PizzaComponent.h"
 #include <vector>
-#include <map>
-#include <list>
-#include "Pizza.h"
+
+class ToppingGroup : public PizzaComponent {
+private:
+    vector<PizzaComponent*> components;
+
+public:
+    ToppingGroup(string n);
+    ~ToppingGroup();
+
+    void add(PizzaComponent* component);
+
+    string getName();
+    double getPrice();
+};
 
 #endif

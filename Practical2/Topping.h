@@ -4,11 +4,14 @@
 #ifndef TOPPING_H
 #define TOPPING_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
-#include "Pizza.h"
+#include "PizzaComponent.h"
+
+class Topping : public PizzaComponent {
+public:
+    Topping(double p, string n) : PizzaComponent(p, n) {}
+
+    string getName();
+    double getPrice();
+};
 
 #endif

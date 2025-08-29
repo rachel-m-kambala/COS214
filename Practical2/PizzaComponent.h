@@ -4,11 +4,20 @@
 #ifndef PIZZACOMPONENT_H
 #define PIZZACOMPONENT_H
 
-#include <iostream>
 #include <string>
-#include <vector>
-#include <map>
-#include <list>
-#include "Pizza.h"
+using namespace std;
+
+class PizzaComponent {
+protected:
+    double price;
+    string name;
+
+public:
+    PizzaComponent(double p, string n) : price(p), name(n) {}
+    virtual ~PizzaComponent() {}
+
+    virtual string getName() = 0;
+    virtual double getPrice() = 0;
+};
 
 #endif
