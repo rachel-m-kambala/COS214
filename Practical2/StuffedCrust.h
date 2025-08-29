@@ -5,18 +5,17 @@
 #define STUFFEDCRUST_H
 
 #include "PizzaDecorator.h"
+#include <iostream>
+#include <string>
 
 class StuffedCrust : public PizzaDecorator {
-private:
-    double extraPrice;
-
 public:
-    StuffedCrust(Pizza* p, double cost = 3.5);
-    ~StuffedCrust();
+    StuffedCrust(Pizza* p, double cost = 3.5) : PizzaDecorator(p, cost) {}
+    ~StuffedCrust() {}
 
-    double getPrice();
-    string getName();
-    void printPizza();
+    double getPrice() override { return PizzaDecorator::getPrice(); }
+    std::string getName() override { return PizzaDecorator::getName() + " + Stuffed Crust"; }
+    void printPizza() override { std::cout << getName() << " - Price: $" << getPrice() << "\n"; }
 };
 
 #endif

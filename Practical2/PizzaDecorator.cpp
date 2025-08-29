@@ -14,7 +14,6 @@ double PizzaDecorator::getPrice() {
     return pizza->getPrice() + extraPrice;
 }
 
-
 std::string PizzaDecorator::getName() {
     return pizza->getName();
 }

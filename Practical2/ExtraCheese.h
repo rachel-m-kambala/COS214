@@ -5,17 +5,17 @@
 #define EXTRACHEESE_H
 
 #include "PizzaDecorator.h"
+#include <iostream>
 #include <string>
 
 class ExtraCheese : public PizzaDecorator {
-private:
-    double extraPrice;
-
 public:
-    ExtraCheese(Pizza* p, double cost);
+    ExtraCheese(Pizza* p, double cost = 2.0);
+    ~ExtraCheese();
+
     double getPrice() override;
     std::string getName() override;
+    void printPizza() override;
 };
 
 #endif
-
