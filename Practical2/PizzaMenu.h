@@ -9,6 +9,11 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "Pizza.h"
+#include "Menus.h"
+
+class PizzaMenu : public Menus {
+    public:
+        void notifyObservers(std::string message);
+};
 
 #endif

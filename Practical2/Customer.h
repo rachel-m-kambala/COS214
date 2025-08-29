@@ -9,6 +9,14 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "Pizza.h"
+#include "Observer.h"
+
+class Customer : public Observer {
+    public:
+        Customer(std::string name);
+        void update(std::string message);
+    private:
+        std::string name;
+};
 
 #endif

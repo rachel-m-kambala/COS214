@@ -9,6 +9,12 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "Pizza.h"
+#include "Observer.h"
+
+class Website : public Observer {
+    public:
+        void update(std::string message);
+
+};
 
 #endif

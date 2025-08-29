@@ -2,3 +2,7 @@
 //JERUSHA THAVER u23686376
 
 #include "Website.h"
+
+void Website::update(std::string message) {
+    std::cout << "Website Notification: " << message << std::endl;
+};
