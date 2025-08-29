@@ -3,22 +3,22 @@
 
 #include "BasePizza.h"
 #include <iostream>
-using namespace std;
 
-BasePizza::BasePizza(PizzaComponent* pc) : pizzaComponent(pc) {}
+BasePizza::BasePizza(PizzaComponent* t)
+    : toppings(t) {}
 
 BasePizza::~BasePizza() {
-    delete pizzaComponent; // cleanup composite toppings
+    delete toppings;
 }
 
 double BasePizza::getPrice() {
-    return pizzaComponent->getPrice(); // delegate to composite
+    return toppings->getPrice();
 }
 
-string BasePizza::getName() {
-    return pizzaComponent->getName();  // delegate to composite
+std::string BasePizza::getName() {
+    return toppings->getName();
 }
 
 void BasePizza::printPizza() {
-    cout << getName() << " -> Price: " << getPrice() << endl;
+    std::cout << getName() << " - Price: $" << getPrice() << "\n";
 }

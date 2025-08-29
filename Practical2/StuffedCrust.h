@@ -10,12 +10,12 @@
 
 class StuffedCrust : public PizzaDecorator {
 public:
-    StuffedCrust(Pizza* p, double cost = 3.5) : PizzaDecorator(p, cost) {}
-    ~StuffedCrust() {}
+    StuffedCrust(Pizza* p, double cost = 3.5);
+    ~StuffedCrust();
 
-    double getPrice() override { return PizzaDecorator::getPrice(); }
-    std::string getName() override { return PizzaDecorator::getName() + " + Stuffed Crust"; }
-    void printPizza() override { std::cout << getName() << " - Price: $" << getPrice() << "\n"; }
+    double getPrice() override;
+    std::string getName() override;
+    void printPizza() override;
 };
 
 #endif

@@ -5,13 +5,18 @@
 #define TOPPING_H
 
 #include "PizzaComponent.h"
+#include <string>
 
 class Topping : public PizzaComponent {
-public:
-    Topping(double p, string n) : PizzaComponent(p, n) {}
+    double price;
+    std::string name;
 
-    string getName();
-    double getPrice();
+public:
+    Topping(double p, const std::string& n);
+    ~Topping() {}
+
+    double getPrice() override;
+    std::string getName() override;
 };
 
 #endif

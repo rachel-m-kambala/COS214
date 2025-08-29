@@ -6,19 +6,20 @@
 
 #include "PizzaComponent.h"
 #include <vector>
+#include <string>
 
 class ToppingGroup : public PizzaComponent {
-private:
-    vector<PizzaComponent*> components;
+    std::vector<PizzaComponent*> components;
+    std::string groupName;
 
 public:
-    ToppingGroup(string n);
+    ToppingGroup(const std::string& name);
     ~ToppingGroup();
 
     void add(PizzaComponent* component);
-
-    string getName();
-    double getPrice();
+    double getPrice() override;
+    std::string getName() override;
 };
 
 #endif
+

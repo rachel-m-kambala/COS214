@@ -3,10 +3,13 @@
 
 #include "Topping.h"
 
-string Topping::getName() {
-    return name;
-}
+Topping::Topping(double p, const std::string& n)
+    : price(p), name(n) {}
 
 double Topping::getPrice() {
     return price;
+}
+
+std::string Topping::getName() {
+    return name;
 }

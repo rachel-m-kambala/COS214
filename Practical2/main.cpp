@@ -1,4 +1,3 @@
-#include <iostream>
 #include "BasePizza.h"
 #include "ToppingGroup.h"
 #include "Topping.h"
@@ -16,7 +15,7 @@ int main() {
 
     Pizza* myPizza = new ExtraCheese(new StuffedCrust(basePepperoni));
 
-    std::cout << myPizza->getName() << " - Price: $" << myPizza->getPrice() << "\n";
+    myPizza->printPizza();
 
     delete myPizza;
 

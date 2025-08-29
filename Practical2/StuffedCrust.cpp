@@ -2,22 +2,20 @@
 //JERUSHA THAVER u23686376
 
 #include "StuffedCrust.h"
-#include <iostream>
-using namespace std;
 
 StuffedCrust::StuffedCrust(Pizza* p, double cost)
-    : PizzaDecorator(p), extraPrice(cost) {}
+    : PizzaDecorator(p, cost) {}
 
 StuffedCrust::~StuffedCrust() {}
 
 double StuffedCrust::getPrice() {
-    return pizza->getPrice() + extraPrice;
+    return PizzaDecorator::getPrice();
 }
 
-string StuffedCrust::getName() {
-    return pizza->getName() + " + Stuffed Crust";
+std::string StuffedCrust::getName() {
+    return PizzaDecorator::getName() + " + Stuffed Crust";
 }
 
 void StuffedCrust::printPizza() {
-    cout << getName() << " -> Price: " << getPrice() << endl;
+    std::cout << getName() << " - Price: $" << getPrice() << "\n";
 }

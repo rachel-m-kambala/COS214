@@ -3,35 +3,33 @@
 
 #include "ToppingGroup.h"
 
-ToppingGroup::ToppingGroup(string n) : PizzaComponent(0.0, n) {}
+ToppingGroup::ToppingGroup(const std::string& name)
+    : groupName(name) {}
 
 ToppingGroup::~ToppingGroup() {
-    for (int i = 0; i < (int)components.size(); i++) {
-        delete components[i];
+    for (auto c : components) {
+        delete c;
     }
-    components.clear();
 }
 
 void ToppingGroup::add(PizzaComponent* component) {
     components.push_back(component);
 }
 
-string ToppingGroup::getName() {
-    string result = name + " (";
-    for (int i = 0; i < (int)components.size(); i++) {
-        result += components[i]->getName();
-        if (i < (int)components.size() - 1) {
-            result += ", ";
-        }
-    }
-    result += ")";
-    return result;
-}
-
 double ToppingGroup::getPrice() {
     double total = 0.0;
-    for (int i = 0; i < (int)components.size(); i++) {
-        total += components[i]->getPrice();
+    for (auto c : components) {
+        total += c->getPrice();
     }
     return total;
+}
+
+std::string ToppingGroup::getName() {
+    std::string name = groupName + " (";
+    for (size_t i = 0; i < components.size(); ++i) {
+        name += components[i]->getName();
+        if (i != components.size() - 1) name += ", ";
+    }
+    name += ")";
+    return name;
 }

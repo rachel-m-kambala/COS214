@@ -4,12 +4,18 @@
 #include "ExtraCheese.h"
 
 ExtraCheese::ExtraCheese(Pizza* p, double cost)
-    : PizzaDecorator(p), extraPrice(cost) {}
+    : PizzaDecorator(p, cost) {}
+
+ExtraCheese::~ExtraCheese() {}
 
 double ExtraCheese::getPrice() {
-    return pizza->getPrice() + extraPrice;
+    return PizzaDecorator::getPrice();
 }
 
 std::string ExtraCheese::getName() {
-    return pizza->getName() + " + Extra Cheese";
+    return PizzaDecorator::getName() + " + Extra Cheese";
+}
+
+void ExtraCheese::printPizza() {
+    std::cout << getName() << " - Price: $" << getPrice() << "\n";
 }

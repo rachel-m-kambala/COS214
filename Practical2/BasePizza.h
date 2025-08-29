@@ -8,16 +8,15 @@
 #include "PizzaComponent.h"
 
 class BasePizza : public Pizza {
-private:
-    PizzaComponent* pizzaComponent;  // <-- Composite (toppings)
+    PizzaComponent* toppings;
 
 public:
-    BasePizza(PizzaComponent* pc);
+    BasePizza(PizzaComponent* t);
     ~BasePizza();
 
-    double getPrice();
-    string getName();
-    void printPizza();
+    double getPrice() override;
+    std::string getName() override;
+    void printPizza() override;
 };
 
 #endif
