@@ -20,5 +20,5 @@ std::string BasePizza::getName() {
 }
 
 void BasePizza::printPizza() {
-    std::cout << getName() << " - Price: $" << getPrice() << "\n";
+    std::cout << getName() << " - Price: R" << getPrice() << "\n";
 }

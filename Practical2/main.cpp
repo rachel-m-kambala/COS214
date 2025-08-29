@@ -16,13 +16,27 @@ int main() {
     vegetarianDeluxeGroup->add(new Topping(3.0, "Feta Cheese"));
     vegetarianDeluxeGroup->add(new Topping(2.5, "Olives"));
 
-    BasePizza* vegetarianDeluxe = new BasePizza(vegetarianDeluxeGroup);
+        ToppingGroup* pepperoniToppings = new ToppingGroup("Pepperoni Pizza");
+        pepperoniToppings->add(new Topping(5.0, "Dough"));
+        pepperoniToppings->add(new Topping(2.0, "Sauce"));
+        pepperoniToppings->add(new Topping(3.0, "Cheese"));
+        pepperoniToppings->add(new Topping(4.0, "Pepperoni"));
 
-    Pizza* decoratedPizza = new ExtraCheese(new StuffedCrust(vegetarianDeluxe));
+        BasePizza* basePepperoni = new BasePizza(pepperoniToppings);
 
-    decoratedPizza->printPizza();
+        Pizza* myPizza = basePepperoni;
 
-    delete decoratedPizza;
+        
+        
+        BasePizza* vegetarianDeluxe = new BasePizza(vegetarianDeluxeGroup);
+        
+        Pizza* decoratedPizza = new ExtraCheese(new StuffedCrust(vegetarianDeluxe));
+        
+        myPizza->printPizza();
+        decoratedPizza->printPizza();
+        
+        delete decoratedPizza;
+        delete myPizza;
 
     return 0;
 }
