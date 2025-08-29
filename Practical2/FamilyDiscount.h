@@ -9,6 +9,11 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "Pizza.h"
+#include "DiscountStrategy.h"
+
+class FamilyDiscount : public DiscountStrategy {
+    public:
+        double applyDiscount(double price, int quantity);
+};
 
 #endif

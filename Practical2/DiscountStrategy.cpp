@@ -2,3 +2,5 @@
 //JERUSHA THAVER u23686376
 
 #include "DiscountStrategy.h"
+
+//Implement!

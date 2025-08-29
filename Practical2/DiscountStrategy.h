@@ -11,4 +11,12 @@
 #include <list>
 #include "Pizza.h"
 
+//Implement!
+
+class DiscountStrategy {
+    public:
+        virtual double applyDiscount(double price, int quantity) = 0; //pure virtual function
+        virtual ~DiscountStrategy() {}
+};
+
 #endif
