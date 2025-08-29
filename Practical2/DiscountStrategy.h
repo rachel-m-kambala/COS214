@@ -11,7 +11,6 @@
 #include <list>
 #include "Pizza.h"
 
-//Implement!
 
 class DiscountStrategy {
     public:

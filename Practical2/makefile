@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++11
-OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o
+OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o Menus.o PizzaMenu.o SpecialsMenu.o Observer.o Customer.o Website.o Pizza.o
 TARGET = pizza
 
 all: $(TARGET)
@@ -29,6 +29,24 @@ Topping.o: Topping.cpp Topping.h PizzaComponent.h
 
 ToppingGroup.o: ToppingGroup.cpp ToppingGroup.h PizzaComponent.h
 	$(CXX) $(CXXFLAGS) -c ToppingGroup.cpp
+
+Menus.o: Menus.cpp Menus.h Pizza.h Observer.h
+	$(CXX) $(CXXFLAGS) -c Menus.cpp
+
+PizzaMenu.o: PizzaMenu.cpp PizzaMenu.h Menus.h
+	$(CXX) $(CXXFLAGS) -c PizzaMenu.cpp
+
+SpecialsMenu.o: SpecialsMenu.cpp SpecialsMenu.h Menus.h
+	$(CXX) $(CXXFLAGS) -c SpecialsMenu.cpp
+
+Customer.o: Customer.cpp Customer.h Observer.h
+	$(CXX) $(CXXFLAGS) -c Customer.cpp
+
+Website.o: Website.cpp Website.h Observer.h
+	$(CXX) $(CXXFLAGS) -c Website.cpp
+
+Pizza.o: Pizza.cpp Pizza.h DiscountStrategy.h Observer.h
+	$(CXX) $(CXXFLAGS) -c Pizza.cpp
 
 run: $(TARGET)
 	./$(TARGET)

@@ -20,7 +20,7 @@ class Menus{
         void removePizza(Pizza* pizza);
         virtual void notifyObservers(std::string message) = 0;
 
-    private:
+    protected:
         std::vector<Observer*> observers;
         std::vector<Pizza*> pizzas;   
 };

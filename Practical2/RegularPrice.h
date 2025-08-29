@@ -14,6 +14,6 @@
 class RegularPrice : public DiscountStrategy{
     public:
         double applyDiscount(double price, int quantity);
-}
+};
 
 #endif
