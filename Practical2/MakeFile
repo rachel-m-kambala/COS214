@@ -1,11 +1,12 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++11
 OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o
+TARGET = pizza
 
-all: pizza
+all: $(TARGET)
 
-pizza: $(OBJ)
-	$(CXX) $(CXXFLAGS) -o pizza $(OBJ)
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
 
 main.o: main.cpp Pizza.h BasePizza.h ExtraCheese.h StuffedCrust.h Topping.h ToppingGroup.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -25,5 +26,11 @@ Topping.o: Topping.cpp Topping.h PizzaComponent.h
 ToppingGroup.o: ToppingGroup.cpp ToppingGroup.h PizzaComponent.h
 	$(CXX) $(CXXFLAGS) -c ToppingGroup.cpp
 
+run: $(TARGET)
+	./$(TARGET)
+
+valgrind: $(TARGET)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET)
+
 clean:
-	rm -f *.o pizza
+	rm -f *.o $(TARGET)

@@ -1,44 +1,50 @@
 #include <iostream>
+#include <vector>
 #include "Topping.h"
 #include "ToppingGroup.h"
-using namespace std;
+#include "BasePizza.h"
+#include "ExtraCheese.h"
+#include "StuffedCrust.h"
 
 int main() {
-    // Base pizzas
-    ToppingGroup* pepperoniPizza = new ToppingGroup("Pepperoni Pizza");
-    pepperoniPizza->add(new Topping(5.0, "Dough"));
-    pepperoniPizza->add(new Topping(2.0, "Sauce"));
-    pepperoniPizza->add(new Topping(3.0, "Cheese"));
-    pepperoniPizza->add(new Topping(4.0, "Pepperoni"));
+    // Build composite Pepperoni pizza
+    ToppingGroup* pepperoniToppings = new ToppingGroup("Pepperoni Pizza");
+    pepperoniToppings->add(new Topping(5.0, "Dough"));
+    pepperoniToppings->add(new Topping(2.0, "Sauce"));
+    pepperoniToppings->add(new Topping(3.0, "Cheese"));
+    pepperoniToppings->add(new Topping(4.0, "Pepperoni"));
 
-    ToppingGroup* vegetarianPizza = new ToppingGroup("Vegetarian Pizza");
-    vegetarianPizza->add(new Topping(5.0, "Dough"));
-    vegetarianPizza->add(new Topping(2.0, "Sauce"));
-    vegetarianPizza->add(new Topping(3.0, "Cheese"));
-    vegetarianPizza->add(new Topping(2.0, "Mushrooms"));
-    vegetarianPizza->add(new Topping(2.0, "Green Peppers"));
-    vegetarianPizza->add(new Topping(2.0, "Onions"));
+    // Build composite Vegetarian pizza
+    ToppingGroup* vegetarianToppings = new ToppingGroup("Vegetarian Pizza");
+    vegetarianToppings->add(new Topping(5.0, "Dough"));
+    vegetarianToppings->add(new Topping(2.0, "Sauce"));
+    vegetarianToppings->add(new Topping(3.0, "Cheese"));
+    vegetarianToppings->add(new Topping(2.0, "Mushrooms"));
+    vegetarianToppings->add(new Topping(2.0, "Green Peppers"));
+    vegetarianToppings->add(new Topping(2.0, "Onions"));
 
-    // Extended pizzas
-    ToppingGroup* meatLovers = new ToppingGroup("Meat Lovers");
-    meatLovers->add(pepperoniPizza);
-    meatLovers->add(new Topping(4.0, "Beef Sausage"));
-    meatLovers->add(new Topping(4.0, "Salami"));
+    // Create pizzas using BasePizza
+    Pizza* basePepperoni = new BasePizza(pepperoniToppings);
+    Pizza* baseVegetarian = new BasePizza(vegetarianToppings);
 
-    ToppingGroup* vegetarianDeluxe = new ToppingGroup("Vegetarian Deluxe");
-    vegetarianDeluxe->add(vegetarianPizza);
-    vegetarianDeluxe->add(new Topping(3.0, "Feta Cheese"));
-    vegetarianDeluxe->add(new Topping(2.0, "Olives"));
+    // Decorate pizzas
+    Pizza* pepperoniExtra = new ExtraCheese(basePepperoni);
+    Pizza* vegetarianDeluxe = new StuffedCrust(new ExtraCheese(baseVegetarian));
 
-    // Print pizzas
-    cout << pepperoniPizza->getName() << " -> Price: " << pepperoniPizza->getPrice() << endl;
-    cout << vegetarianPizza->getName() << " -> Price: " << vegetarianPizza->getPrice() << endl;
-    cout << meatLovers->getName() << " -> Price: " << meatLovers->getPrice() << endl;
-    cout << vegetarianDeluxe->getName() << " -> Price: " << vegetarianDeluxe->getPrice() << endl;
+    // Store all pizzas in a vector
+    std::vector<Pizza*> pizzaMenu;
+    pizzaMenu.push_back(pepperoniExtra);
+    pizzaMenu.push_back(vegetarianDeluxe);
+
+    // Print all pizzas
+    for (int i = 0; i < pizzaMenu.size(); i++) {
+        pizzaMenu[i]->printPizza();
+    }
 
     // Cleanup
-    delete meatLovers;
-    delete vegetarianDeluxe;
+    for (int i = 0; i < pizzaMenu.size(); i++) {
+        delete pizzaMenu[i]; // deletes decorated pizzas and underlying BasePizza
+    }
 
     return 0;
 }
