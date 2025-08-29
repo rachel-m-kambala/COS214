@@ -17,5 +17,5 @@ std::string StuffedCrust::getName() {
 }
 
 void StuffedCrust::printPizza() {
-    std::cout << getName() << " - Price: $" << getPrice() << "\n";
+    std::cout << getName() << " - Price: R" << getPrice() << "\n";
 }

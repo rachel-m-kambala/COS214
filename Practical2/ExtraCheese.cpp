@@ -17,5 +17,5 @@ std::string ExtraCheese::getName() {
 }
 
 void ExtraCheese::printPizza() {
-    std::cout << getName() << " - Price: $" << getPrice() << "\n";
+    std::cout << getName() << " - Price: R" << getPrice() << "\n";
 }
