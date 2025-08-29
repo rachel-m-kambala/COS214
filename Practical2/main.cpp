@@ -3,21 +3,26 @@
 #include "Topping.h"
 #include "ExtraCheese.h"
 #include "StuffedCrust.h"
+#include <iostream>
 
 int main() {
-    ToppingGroup* pepperoniToppings = new ToppingGroup("Pepperoni Pizza");
-    pepperoniToppings->add(new Topping(5.0, "Dough"));
-    pepperoniToppings->add(new Topping(2.0, "Sauce"));
-    pepperoniToppings->add(new Topping(3.0, "Cheese"));
-    pepperoniToppings->add(new Topping(4.0, "Pepperoni"));
+    ToppingGroup* vegetarianBase = new ToppingGroup("Vegetarian");
+    vegetarianBase->add(new Topping(2.0, "Mushrooms"));
+    vegetarianBase->add(new Topping(2.0, "Green Peppers"));
+    vegetarianBase->add(new Topping(2.0, "Onions"));
 
-    BasePizza* basePepperoni = new BasePizza(pepperoniToppings);
+    ToppingGroup* vegetarianDeluxeGroup = new ToppingGroup("Vegetarian Deluxe");
+    vegetarianDeluxeGroup->add(vegetarianBase);
+    vegetarianDeluxeGroup->add(new Topping(3.0, "Feta Cheese"));
+    vegetarianDeluxeGroup->add(new Topping(2.5, "Olives"));
 
-    Pizza* myPizza = new ExtraCheese(new StuffedCrust(basePepperoni));
+    BasePizza* vegetarianDeluxe = new BasePizza(vegetarianDeluxeGroup);
 
-    myPizza->printPizza();
+    Pizza* decoratedPizza = new ExtraCheese(new StuffedCrust(vegetarianDeluxe));
 
-    delete myPizza;
+    decoratedPizza->printPizza();
+
+    delete decoratedPizza;
 
     return 0;
 }
