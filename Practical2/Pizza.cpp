@@ -3,11 +3,11 @@
 
 #include "Pizza.h"
 
-Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(nullptr) {}
+Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL) {}
 
 double Pizza::getPrice() {
     if (strategy) {
-        return strategy->applyDiscount(basePrice);
+        return strategy->applyDiscount(basePrice, 1);
     }
     return basePrice;
 }
@@ -18,7 +18,7 @@ std::string Pizza::getName() {
 
 double Pizza::getFinalPrice() {
     if (strategy) {
-        return strategy->applyDiscount(basePrice);
+        return strategy->applyDiscount(basePrice, 1);
     }
     return basePrice;
 }
