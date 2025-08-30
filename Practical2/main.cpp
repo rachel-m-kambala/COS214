@@ -10,6 +10,10 @@
 #include "Website.h"
 #include "PizzaMenu.h"
 #include "SpecialsMenu.h"
+#include "DoughAndSauceState.h"
+#include "ToppingsAddedState.h"
+#include "InOvenState.h"
+#include "ReadyForCollectionState.h"
 #include <iostream>
 
 int main() {
@@ -39,6 +43,29 @@ int main() {
         
     myPizza->printPizza();
     decoratedPizza->printPizza();
+
+     // Set initial state for the pepperoni pizza
+    myPizza->setState(new DoughAndSauceState());
+    myPizza->printState();
+
+    // Move through states
+    myPizza->nextState();     // Toppings added
+    myPizza->printState();
+
+    myPizza->nextState();     // In oven
+    myPizza->printState();
+
+    myPizza->nextState();     // Ready for collection
+    myPizza->printState();
+
+    // Move backwards
+    myPizza->previousState(); // In oven
+    myPizza->printState();
+
+    myPizza->previousState(); // Toppings added
+    myPizza->printState();
+
+ 
 
     Customer c1("PizzaLover123");
     Customer c2("Foodie456");

@@ -3,7 +3,14 @@
 
 #include "Pizza.h"
 
-Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL) {}
+Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL), state(NULL){}
+
+Pizza::~Pizza() {
+    if (state) {
+        delete state;
+        state = NULL;
+    }
+}
 
 double Pizza::getPrice() {
     if (strategy) {
@@ -64,16 +71,16 @@ void Pizza::notifyObservers(std::string message) {
 }
 
 // // Jerusha -State methods
-// void Pizza::nextState() {
-//     if(state) state->next(this);
-// }
-// void Pizza::previousState() {
-//     if(state) state->previous(this);
-// }
-// void Pizza::printState() {
-//     if(state) std::cout << "Current State: " << state->getName() << std::endl;
-// }
-// void Pizza::setState(PizzaState* newState) {
-//     if(state) delete state;
-//     state = newState;
-// }
+void Pizza::nextState() {
+    if(state) state->next(this);
+}
+void Pizza::previousState() {
+    if(state) state->previous(this);
+}
+void Pizza::printState() {
+    if(state) std::cout << "Current State: " << state->getName() << std::endl;
+}
+void Pizza::setState(PizzaState* newState) {
+    if(state) delete state;
+    state = newState;
+}
