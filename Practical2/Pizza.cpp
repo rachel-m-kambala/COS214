@@ -25,12 +25,12 @@ std::string Pizza::getName() {
     return name;
 }
 
-double Pizza::getFinalPrice() {
-    if (strategy) {
-        return strategy->applyDiscount(basePrice, 1);
-    }
-    return basePrice;
-}
+// double Pizza::getFinalPrice() {
+//     if (strategy) {
+//         return strategy->applyDiscount(basePrice, 1);
+//     }
+//     return basePrice;
+// }
 
 // double Pizza::getFinalPrice() {
 //     if (strategy) {
