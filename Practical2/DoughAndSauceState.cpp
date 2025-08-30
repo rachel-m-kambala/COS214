@@ -1,6 +1,12 @@
 #include "DoughAndSauceState.h"
+#include "Pizza.h"
 #include "ToppingsAddedState.h"
-#include <iostream>
+
+DoughAndSauceState::DoughAndSauceState() {}
+
+std::string DoughAndSauceState::getName() {
+    return "Dough and Sauce Prepared";
+}
 
 void DoughAndSauceState::next(Pizza* pizza) {
     pizza->setState(new ToppingsAddedState());

@@ -5,18 +5,18 @@
 
 Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL) {}
 
-// double Pizza::getPrice() {
-//     if (strategy) {
-//         return strategy->applyDiscount(basePrice, 1);
-//     }
-//     return basePrice;
-// }
+double Pizza::getPrice() {
+    if (strategy) {
+        return strategy->applyDiscount(basePrice, 1);
+    }
+    return basePrice;
+}
 
 //Get Price is needs to be virtual for the decorate uu change the decorator 
 
 // double Pizza::getPrice() {
 //     if (strategy) {
-//         return strategy->applyDiscount(basePrice);
+//         return strategy->applyDiscount(basePrice, 1);
 //     }
 //     return basePrice;
 // }
@@ -25,12 +25,12 @@ std::string Pizza::getName() {
     return name;
 }
 
-// double Pizza::getFinalPrice() {
-//     if (strategy) {
-//         return strategy->applyDiscount(basePrice, 1);
-//     }
-//     return basePrice;
-// }
+double Pizza::getFinalPrice() {
+    if (strategy) {
+        return strategy->applyDiscount(basePrice, 1);
+    }
+    return basePrice;
+}
 
 // double Pizza::getFinalPrice() {
 //     if (strategy) {
@@ -77,7 +77,3 @@ void Pizza::notifyObservers(std::string message) {
 //     if(state) delete state;
 //     state = newState;
 // }
-
-Pizza::~Pizza(){
-    
-}

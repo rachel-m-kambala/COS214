@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++11
-OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o Menus.o PizzaMenu.o SpecialsMenu.o Observer.o Customer.o Website.o Pizza.o
+OBJ = main.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o Menus.o PizzaMenu.o SpecialsMenu.o Observer.o Customer.o Website.o Pizza.o  DoughAndSauceState.o ToppingsAddedState.o InOvenState.o ReadyForCollectionState.o
 TARGET = pizza
 
 all: $(TARGET)

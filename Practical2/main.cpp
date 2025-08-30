@@ -8,8 +8,6 @@
 #include "FamilyDiscount.h"
 #include "Customer.h"
 #include "Website.h"
-#include "PizzaMenu.h"
-#include "SpecialsMenu.h"
 #include <iostream>
 
 int main() {
@@ -40,26 +38,13 @@ int main() {
     myPizza->printPizza();
     decoratedPizza->printPizza();
 
-    PizzaMenu pizzaMenu;
-    SpecialsMenu specialsMenu;
+    
 
-    Customer customer1("PizzaLover1");
-    Customer customer2("ObsessedWithP1zza");
-    Website site;
+    // Customer customer("Pizza Lover");
+    // Website website;
 
-    pizzaMenu.addObserver(&customer1);
-    pizzaMenu.addObserver(&site);
-    specialsMenu.addObserver(&customer2);
-    specialsMenu.addObserver(&site);
-    std::cout << "==========================================================" << std::endl;
-    std::cout << std::endl;
-    pizzaMenu.addPizza(myPizza);
-    std::cout << "==========================================================" << std::endl;
-    std::cout << std::endl;
-    specialsMenu.addPizza(decoratedPizza);
-    std::cout << "==========================================================" << std::endl;
-    std::cout << std::endl;  
-    pizzaMenu.removePizza(decoratedPizza);
+    // decoratedPizza->addObserver(&customer);
+    // decoratedPizza->addObserver(&website);
 
     // std::cout << "\n==== Initial Pizza ====" << std::endl;
 
