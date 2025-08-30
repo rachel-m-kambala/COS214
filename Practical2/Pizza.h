@@ -28,11 +28,11 @@ public:
     void removeObserver(Observer* observer);
     void notifyObservers(std::string message);
 
-    // State methods
-    // void nextState();
-    // void previousState();
-    // void printState();
-    // void setState(PizzaState* newState);
+   // State methods
+    void nextState();
+    void previousState();
+    void printState();
+    void setState(PizzaState* newState);
 
 protected:
     std::string name;

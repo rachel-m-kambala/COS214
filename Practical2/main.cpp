@@ -8,6 +8,10 @@
 #include "FamilyDiscount.h"
 #include "Customer.h"
 #include "Website.h"
+#include "DoughAndSauceState.h"
+#include "ToppingsAddedState.h"
+#include "InOvenState.h"
+#include "ReadyForCollectionState.h"
 #include <iostream>
 
 int main() {
@@ -38,13 +42,34 @@ int main() {
     myPizza->printPizza();
     decoratedPizza->printPizza();
 
-    
 
-    // Customer customer("Pizza Lover");
-    // Website website;
+    // Set initial state for the pepperoni pizza
+    myPizza->setState(new DoughAndSauceState());
+    myPizza->printState();
 
-    // decoratedPizza->addObserver(&customer);
-    // decoratedPizza->addObserver(&website);
+    // Move through states
+    myPizza->nextState();     // Toppings added
+    myPizza->printState();
+
+    myPizza->nextState();     // In oven
+    myPizza->printState();
+
+    myPizza->nextState();     // Ready for collection
+    myPizza->printState();
+
+    // Move backwards
+    myPizza->previousState(); // In oven
+    myPizza->printState();
+
+    myPizza->previousState(); // Toppings added
+    myPizza->printState();
+
+
+    Customer customer("Pizza Lover");
+    Website website;
+
+    decoratedPizza->addObserver(&customer);
+    decoratedPizza->addObserver(&website);
 
     // std::cout << "\n==== Initial Pizza ====" << std::endl;
 

@@ -2,13 +2,15 @@
 #define DOUGHANDSAUCESTATE_H
 
 #include "PizzaState.h"
-#include "Pizza.h"
+#include <string>
+#include <iostream>
 
 class DoughAndSauceState : public PizzaState {
 public:
-    void next(Pizza* pizza);
-    void previous(Pizza* pizza);
-    std::string getName() { return "Dough and Sauce Prepared"; }
+    DoughAndSauceState();           
+    std::string getName() override;   
+    void next(Pizza* pizza) override; 
+    void previous(Pizza* pizza) override; 
 };
 
 #endif

@@ -5,32 +5,18 @@
 
 Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL) {}
 
-double Pizza::getPrice() {
-    if (strategy) {
-        return strategy->applyDiscount(basePrice, 1);
-    }
-    return basePrice;
+Pizza::~Pizza() {
+   
 }
-
-//Get Price is needs to be virtual for the decorate uu change the decorator 
 
 // double Pizza::getPrice() {
 //     if (strategy) {
-//         return strategy->applyDiscount(basePrice);
+//         return strategy->applyDiscount(basePrice, 1);
 //     }
 //     return basePrice;
 // }
 
-std::string Pizza::getName() {
-    return name;
-}
 
-double Pizza::getFinalPrice() {
-    if (strategy) {
-        return strategy->applyDiscount(basePrice, 1);
-    }
-    return basePrice;
-}
 
 // double Pizza::getFinalPrice() {
 //     if (strategy) {
@@ -63,17 +49,17 @@ void Pizza::notifyObservers(std::string message) {
     }
 }
 
-// // Jerusha -State methods
-// void Pizza::nextState() {
-//     if(state) state->next(this);
-// }
-// void Pizza::previousState() {
-//     if(state) state->previous(this);
-// }
-// void Pizza::printState() {
-//     if(state) std::cout << "Current State: " << state->getName() << std::endl;
-// }
-// void Pizza::setState(PizzaState* newState) {
-//     if(state) delete state;
-//     state = newState;
-// }
+// Jerusha -State methods
+void Pizza::nextState() {
+    if(state) state->next(this);
+}
+void Pizza::previousState() {
+    if(state) state->previous(this);
+}
+void Pizza::printState() {
+    if(state) std::cout << "Current State: " << state->getName() << std::endl;
+}
+void Pizza::setState(PizzaState* newState) {
+    if(state) delete state;
+    state = newState;
+}
