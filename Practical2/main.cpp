@@ -8,6 +8,8 @@
 #include "FamilyDiscount.h"
 #include "Customer.h"
 #include "Website.h"
+#include "PizzaMenu.h"
+#include "SpecialsMenu.h"
 #include <iostream>
 
 int main() {
@@ -38,13 +40,26 @@ int main() {
     myPizza->printPizza();
     decoratedPizza->printPizza();
 
-    
+    PizzaMenu pizzaMenu;
+    SpecialsMenu specialsMenu;
 
-    // Customer customer("Pizza Lover");
-    // Website website;
+    Customer customer1("PizzaLover1");
+    Customer customer2("ObsessedWithP1zza");
+    Website site;
 
-    // decoratedPizza->addObserver(&customer);
-    // decoratedPizza->addObserver(&website);
+    pizzaMenu.addObserver(&customer1);
+    pizzaMenu.addObserver(&site);
+    specialsMenu.addObserver(&customer2);
+    specialsMenu.addObserver(&site);
+    std::cout << "==========================================================" << std::endl;
+    std::cout << std::endl;
+    pizzaMenu.addPizza(myPizza);
+    std::cout << "==========================================================" << std::endl;
+    std::cout << std::endl;
+    specialsMenu.addPizza(decoratedPizza);
+    std::cout << "==========================================================" << std::endl;
+    std::cout << std::endl;  
+    pizzaMenu.removePizza(decoratedPizza);
 
     // std::cout << "\n==== Initial Pizza ====" << std::endl;
 
@@ -64,8 +79,8 @@ int main() {
     // decoratedPizza->printPizza();
     // std::cout << "Final Price: R" << decoratedPizza->getFinalPrice() << std::endl;
 
-    // delete decoratedPizza;
-    // delete myPizza;
+    delete decoratedPizza;
+    delete myPizza;
 
     // std::cout << "\n==========================================================" << std::endl;
     // std::cout << "================= Extra Testing ====================" << std::endl;

@@ -13,6 +13,7 @@
 class Observer {
     public:
         virtual void update(std::string message) = 0;
+        //virtual void printNotifications() = 0;
 };
 
 #endif
