@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++11
-OBJ = TestingMain.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o Menus.o PizzaMenu.o SpecialsMenu.o Observer.o Customer.o Website.o Pizza.o  DoughAndSauceState.o ToppingsAddedState.o InOvenState.o ReadyForCollectionState.o Order.o FamilyDiscount.o BulkDiscount.o RegularPrice.o
+OBJ = TestingMain.o BasePizza.o ExtraCheese.o StuffedCrust.o Topping.o ToppingGroup.o PizzaDecorator.o Menus.o PizzaMenu.o SpecialsMenu.o Observer.o Customer.o Website.o Pizza.o  DoughAndSauceState.o ToppingsAddedState.o InOvenState.o ReadyForCollectionState.o Order.o FamilyDiscount.o BulkDiscount.o RegularPrice.o Order.o
 TARGET = pizza
 
 all: $(TARGET)
@@ -11,6 +11,8 @@ $(TARGET): $(OBJ)
 PizzaDecorator.o: PizzaDecorator.cpp PizzaDecorator.h Pizza.h
 	$(CXX) $(CXXFLAGS) -c PizzaDecorator.cpp
 
+Order.o: Order.cpp Order.h Pizza.h Observer.h
+	$(CXX) $(CXXFLAGS) -c Order.cpp
 
 TestingMain.o: TestingMain.cpp Pizza.h BasePizza.h ExtraCheese.h StuffedCrust.h Topping.h ToppingGroup.h
 	$(CXX) $(CXXFLAGS) -c TestingMain.cpp
@@ -53,17 +55,6 @@ run: $(TARGET)
 
 valgrind: $(TARGET)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET)
-
-coverage:
-	$(CXX) --coverage -O0 main.cpp BasePizza.cpp ExtraCheese.cpp StuffedCrust.cpp Topping.cpp ToppingGroup.cpp PizzaDecorator.cpp Menus.cpp PizzaMenu.cpp SpecialsMenu.cpp Observer.cpp Customer.cpp Website.cpp Pizza.cpp  DoughAndSauceState.cpp ToppingsAddedState.cpp InOvenState.cpp ReadyForCollectionState.cpp -o LibSys
-	./LibSys
-	lcov --capture --directory . --output-file coverage.info
-	genhtml coverage.info --output-directory out
-
-coverage-clean:
-	rm -f *.gcda *.gcno coverage.info
-	rm -rf out
-	rm -f LibSys
 
 clean:
 	rm -f *.o $(TARGET)
