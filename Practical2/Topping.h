@@ -17,6 +17,7 @@ public:
 
     double getPrice() override;
     std::string getName() override;
+     virtual PizzaComponent* clone();
 };
 
 #endif

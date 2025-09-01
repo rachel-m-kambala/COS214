@@ -13,3 +13,6 @@ double Topping::getPrice() {
 std::string Topping::getName() {
     return name;
 }
+PizzaComponent* Topping::clone() {
+    return new Topping(*this); // Uses copy constructor
+}

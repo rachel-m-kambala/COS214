@@ -13,7 +13,10 @@
 
 class PizzaMenu : public Menus {
     public:
-        void notifyObservers(std::string message);
+    PizzaMenu();
+    ~PizzaMenu();
+      void notifyObservers(std::string message);
+
 };
 
 #endif

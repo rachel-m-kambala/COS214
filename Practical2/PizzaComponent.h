@@ -11,6 +11,8 @@ public:
     virtual ~PizzaComponent() {}
     virtual double getPrice() = 0;
     virtual std::string getName() = 0;
+    virtual PizzaComponent* clone() = 0;
+
 };
 
 #endif

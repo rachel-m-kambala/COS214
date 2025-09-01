@@ -14,11 +14,15 @@ class ToppingGroup : public PizzaComponent {
 
 public:
     ToppingGroup(const std::string& name);
+    ToppingGroup(const ToppingGroup& other);
     ~ToppingGroup();
 
     void add(PizzaComponent* component);
     double getPrice() override;
     std::string getName() override;
+
+    virtual PizzaComponent* clone() override;
+
 };
 
 #endif
