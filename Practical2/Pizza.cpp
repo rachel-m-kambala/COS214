@@ -17,11 +17,11 @@ Pizza::~Pizza() {
 }
 
 double Pizza::getPrice() {
-    if (strategy) {
-        return strategy->applyDiscount(basePrice, 1);
-    }
+    if (strategy)
+        return strategy->applyDiscount(basePrice, quantity);
     return basePrice;
 }
+
 
 //Get Price is needs to be virtual for the decorate uu change the decorator 
 

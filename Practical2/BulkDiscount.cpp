@@ -10,4 +10,5 @@ double BulkDiscount::applyDiscount(double price, int quantity) {
         double discountedPrice = total * (1 - discount);
         return discountedPrice;
     }
+    return price * quantity;
 }

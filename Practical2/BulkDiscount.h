@@ -4,16 +4,11 @@
 #ifndef BULKDISCOUNT_H
 #define BULKDISCOUNT_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
 #include "DiscountStrategy.h"
 
 class BulkDiscount : public DiscountStrategy {
-    public:
-        double applyDiscount(double price, int quantity);
+public:
+    double applyDiscount(double price, int quantity);
 };
 
 #endif

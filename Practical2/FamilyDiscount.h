@@ -4,16 +4,12 @@
 #ifndef FAMILYDISCOUNT_H
 #define FAMILYDISCOUNT_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <list>
 #include "DiscountStrategy.h"
 
 class FamilyDiscount : public DiscountStrategy {
-    public:
-        double applyDiscount(double price, int quantity);
+public:
+    double applyDiscount(double price, int quantity);
 };
+
 
 #endif

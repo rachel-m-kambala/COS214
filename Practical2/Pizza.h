@@ -38,6 +38,7 @@ public:
 protected:
     std::string name;
     double basePrice;
+    int quantity = 1; 
     DiscountStrategy* strategy;
     std::vector<Observer*> observers;
 

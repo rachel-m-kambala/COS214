@@ -7,6 +7,7 @@
 #include "RegularPrice.h"
 #include "BulkDiscount.h"
 #include "FamilyDiscount.h"
+#include "Order.h"
 
 #include "DoughAndSauceState.h"
 #include "ToppingsAddedState.h"
@@ -76,6 +77,26 @@ int main() {
     specialsMenu.removePizza(vegBasePizza);
     specialsMenu.removeObserver(&website2);
     specialsMenu.addPizza(basePepperoni);
+
+     // ------------------------
+    // Strategy
+    // ------------------------
+    Order order;
+    order.addPizza(myPizza);
+    order.addPizza(decoratedPizza);
+
+    // Choose a discount strategy dynamically
+    FamilyDiscount family;
+    order.setDiscountStrategy(&family);
+
+    std::cout << "Total after family discount: R" << order.calculateTotal() << std::endl;
+if (order.getOrderSize() >= 5) {
+    BulkDiscount bulk;
+    order.setDiscountStrategy(&bulk);
+}
+
+
+
 
     // ------------------------
     // State Pattern Test
