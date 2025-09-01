@@ -3,6 +3,10 @@
 
 #include "Pizza.h"
 
+Pizza::Pizza(const std::string& name) : name(name) {}
+Pizza::Pizza() : state(NULL) { }
+
+
 Pizza::Pizza(std::string name, double basePrice) : name(name), basePrice(basePrice), strategy(NULL), state(NULL){}
 
 Pizza::~Pizza() {

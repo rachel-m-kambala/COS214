@@ -3,6 +3,13 @@
 
 #include "ToppingGroup.h"
 
+ToppingGroup::ToppingGroup(const ToppingGroup& other) {
+    groupName = other.groupName;
+    for (auto c : other.components) {
+        components.push_back(c->clone()); // deep copy
+    }
+}
+
 ToppingGroup::ToppingGroup(const std::string& name)
     : groupName(name) {}
 
@@ -32,4 +39,13 @@ std::string ToppingGroup::getName() {
     }
     name += ")";
     return name;
+}
+
+
+PizzaComponent* ToppingGroup::clone() {
+    ToppingGroup* copy = new ToppingGroup(groupName);
+    for (auto c : components) {
+        copy->add(c->clone());  // deep copy each component
+    }
+    return copy;
 }

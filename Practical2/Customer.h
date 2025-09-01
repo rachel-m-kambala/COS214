@@ -1,5 +1,5 @@
-//MUKAJI MWENI RACHEL KAMBALA u23559129
-//JERUSHA THAVER u23686376
+// //MUKAJI MWENI RACHEL KAMBALA u23559129
+// //JERUSHA THAVER u23686376
 
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
@@ -20,3 +20,17 @@ class Customer : public Observer {
 };
 
 #endif
+
+// #ifndef CUSTOMER_H
+// #define CUSTOMER_H
+
+// #include "Observer.h"
+// #include <iostream>
+
+// class Customer : public Observer {
+// public:
+// Customer() {}
+//     void update(const std::string& message) override;
+// };
+
+// #endif

@@ -9,8 +9,9 @@
 
 class Pizza {
 public:
+    Pizza(const std::string& name);
     Pizza(std::string name, double basePrice);
-    Pizza() {}
+    Pizza();
 
     virtual ~Pizza();
 

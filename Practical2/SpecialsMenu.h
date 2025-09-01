@@ -13,6 +13,8 @@
 
 class SpecialsMenu : public Menus {
     public:
+            SpecialsMenu();
+    ~SpecialsMenu();
         void notifyObservers(std::string message);
 };
 

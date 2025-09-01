@@ -4,5 +4,5 @@
 #include "Website.h"
 
 void Website::update(std::string message) {
-    std::cout << "Website Notification: " << message << std::endl;
-};
+    std::cout << "Website Update with: " << message << std::endl;
+}
