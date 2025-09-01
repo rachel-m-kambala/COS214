@@ -56,3 +56,14 @@ valgrind: $(TARGET)
 
 clean:
 	rm -f *.o $(TARGET)
+
+coverage:
+	$(CXX) --coverage -O0 main.cpp BasePizza.cpp ExtraCheese.cpp StuffedCrust.cpp Topping.cpp ToppingGroup.cpp PizzaDecorator.cpp Menus.cpp PizzaMenu.cpp SpecialsMenu.cpp Observer.cpp Customer.cpp Website.cpp Pizza.cpp  DoughAndSauceState.cpp ToppingsAddedState.cpp InOvenState.cpp ReadyForCollectionState.cpp -o LibSys
+	./LibSys
+	lcov --capture --directory . --output-file coverage.info
+	genhtml coverage.info --output-directory out
+
+coverage-clean:
+	rm -f *.gcda *.gcno coverage.info
+	rm -rf out
+	rm -f LibSys
