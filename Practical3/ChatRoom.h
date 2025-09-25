@@ -10,10 +10,10 @@
 
 class ChatRoom {
     public:
-        void registerUser(User user) = 0;
-        void sendMessage(std::string message, User fromUser) = 0;
-        void saveMessage(std::string message, User fromUser) = 0;
-        void removeUser(User user) = 0;
+        void registerUser(User user);
+        void sendMessage(std::string message, User fromUser);
+        void saveMessage(std::string message, User fromUser);
+        void removeUser(User user);
     
     private:
         Users* user;
