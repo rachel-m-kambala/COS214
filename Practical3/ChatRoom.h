@@ -7,17 +7,25 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <string>
+
+class User;
 
 class ChatRoom {
     public:
-        void registerUser(User user);
-        void sendMessage(std::string message, User fromUser);
-        void saveMessage(std::string message, User fromUser);
-        void removeUser(User user);
+        ChatRoom(const std::string& name);
+        virtual ~ChatRoom();
+        const std::string& getName() const;
+        virtual void registerUser(User user);
+        virtual void sendMessage(const std::string message, User fromUser);
+        virtual void saveMessage(const std::string message, User fromUser);
+        virtual void removeUser(User user) = 0;
+        void showHistory() const;
     
     private:
-        Users* user;
-        std::string* chatHistory;
-}
+        std::vector<Users*> user;
+        std::vector<std::string*> chatHistory;
+        std::string roomName;
+};
 
 #endif

@@ -9,12 +9,12 @@
 #include <list>
 #include "Users.h"
 
-class Name3{
+class Name3 : public Users{
     public:
         void send(std::string message, ChatRoom room);
         void receive(std::string meesage, Users fromUser, ChatRoom room);
         void addCommand(Command command);
         void executeAll();
-}
+};
 
 #endif

@@ -9,9 +9,9 @@
 #include <list>
 #include "Command.h"
 
-class SendMessageCommand{
+class SendMessageCommand : public Command{
     public:
         void execute();
-}
+};
 
 #endif

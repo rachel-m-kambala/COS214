@@ -7,15 +7,16 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <string>
 
 class SendMessageCommand{
     public:
-        void execute();
+        virtual void execute() = 0;
     
     protected:
         ChatRoom room;
         std::string message;
         User fromUser;
-}
+};
 
 #endif

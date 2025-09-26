@@ -9,12 +9,12 @@
 #include <list>
 #include "ChatRoom.h"
 
-class Dogorithm {
+class Dogorithm : public ChatRoom{
     public:
         void registerUser(User user);
         void sendMessage(std::string message, User fromUser);
         void saveMessage(std::string message, User fromUser);
         void removeUser(User user);
-}
+};
 
 #endif

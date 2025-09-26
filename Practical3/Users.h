@@ -19,6 +19,6 @@ class Users{
         ChatRoom* chatRooms;
         std::string name;
         Command* commandQueue;
-}
+};
 
 #endif
