@@ -25,26 +25,27 @@
 #ifndef CHATROOM_H
 #define CHATROOM_H
 
+#include <iostream>
 #include <string>
 #include <vector>
+#include "Users.h"
 
-class User;
+class User; // forward declaration
 
 class ChatRoom {
 protected:
     std::vector<User*> users;
-    std::vector<std::string> chatHistory;
+    std::vector<std::string> history;
 
 public:
     virtual ~ChatRoom() {}
 
-    virtual void registerUser(User* user);
-    virtual void removeUser(User* user);
+    virtual void registerUser(User* user) = 0;
+    virtual void removeUser(User* user) = 0;
+    virtual void sendMessage(std::string message, User* fromUser) = 0;
+    virtual void saveMessage(std::string message, User* fromUser) = 0;
 
-    virtual void sendMessage(const std::string& message, User* fromUser);
-    virtual void saveMessage(const std::string& message, User* fromUser);
-
-    const std::vector<std::string>& getHistory() const { return chatHistory; }
+    std::vector<std::string> getHistory() { return history; }
 };
 
 #endif

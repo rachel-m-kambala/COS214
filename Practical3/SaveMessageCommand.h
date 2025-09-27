@@ -5,10 +5,10 @@
 
 class SaveMessageCommand : public Command {
 public:
-    SaveMessageCommand(ChatRoom* room, User* user, const std::string& msg)
-        : Command(room, user, msg) {}
+    SaveMessageCommand(ChatRoom* chatRoom, User* fromUser, std::string message)
+        : Command(chatRoom, fromUser, message) {}
 
-    void execute() override;
+    void execute();
 };
 
 #endif

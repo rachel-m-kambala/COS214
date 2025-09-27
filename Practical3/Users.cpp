@@ -1,45 +1,17 @@
-#include "User.h"
+#include "Users.h"
 #include "ChatRoom.h"
+#include "Command.h"
 #include "SendMessageCommand.h"
 #include "SaveMessageCommand.h"
 
-User::User(const std::string& n) : name(n) {}
-
-User::~User() {
-    for (std::vector<Command*>::iterator it = commandQueue.begin(); it != commandQueue.end(); ++it) {
-        delete *it;
-    }
-}
+User::User(std::string name) : name(name) {}
 
 std::string User::getName() const {
     return name;
 }
 
 void User::joinRoom(ChatRoom* room) {
-    chatRooms.push_back(room);
     room->registerUser(this);
-}
-
-void User::leaveRoom(ChatRoom* room) {
-    for (std::vector<ChatRoom*>::iterator it = chatRooms.begin(); it != chatRooms.end(); ++it) {
-        if (*it == room) {
-            chatRooms.erase(it);
-            break;
-        }
-    }
-    room->removeUser(this);
-}
-
-void User::addCommand(Command* command) {
-    commandQueue.push_back(command);
-}
-
-void User::executeAll() {
-    for (std::vector<Command*>::iterator it = commandQueue.begin(); it != commandQueue.end(); ++it) {
-        (*it)->execute();
-        delete *it;
-    }
-    commandQueue.clear();
 }
 
 void User::send(const std::string& message, ChatRoom* room) {
@@ -48,7 +20,18 @@ void User::send(const std::string& message, ChatRoom* room) {
     executeAll();
 }
 
-void User::receive(const std::string& message, User* fromUser, ChatRoom* room) {
-    std::cout << "[" << name << " received in room] " 
-              << fromUser->getName() << ": " << message << std::endl;
+void User::receive(const std::string& message, User* fromUser) {
+    std::cout << name << " received from " << fromUser->getName() << ": " << message << std::endl;
+}
+
+void User::addCommand(Command* command) {
+    commandQueue.push_back(command);
+}
+
+void User::executeAll() {
+    for (size_t i = 0; i < commandQueue.size(); i++) {
+        commandQueue[i]->execute();
+        delete commandQueue[i];
+    }
+    commandQueue.clear();
 }

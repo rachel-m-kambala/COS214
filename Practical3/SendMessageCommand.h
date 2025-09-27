@@ -7,10 +7,10 @@
 
 class SendMessageCommand : public Command {
 public:
-    SendMessageCommand(ChatRoom* room, User* user, const std::string& msg)
-        : Command(room, user, msg) {}
+    SendMessageCommand(ChatRoom* chatRoom, User* fromUser, std::string message)
+        : Command(chatRoom, fromUser, message) {}
 
-    void execute() override;
+    void execute();
 };
 
 #endif
