@@ -3,15 +3,14 @@
 #ifndef SENDMESSAGECOMMAND_H
 #define SENDMESSAGECOMMAND_H
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <list>
 #include "Command.h"
 
-class SendMessageCommand{
-    public:
-        void execute();
-}
+class SendMessageCommand : public Command {
+public:
+    SendMessageCommand(ChatRoom* room, User* user, const std::string& msg)
+        : Command(room, user, msg) {}
+
+    void execute() override;
+};
 
 #endif
