@@ -3,19 +3,23 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <list>
+#include <string>
 
-class SendMessageCommand{
-    public:
-        void execute();
-    
-    protected:
-        ChatRoom room;
-        std::string message;
-        User fromUser;
-}
+class ChatRoom;
+class User;
+
+class Command {
+protected:
+    ChatRoom* chatRoom;
+    User* fromUser;
+    std::string message;
+
+public:
+    Command(ChatRoom* room, User* user, const std::string& msg)
+        : chatRoom(room), fromUser(user), message(msg) {}
+
+    virtual ~Command() {}
+    virtual void execute() = 0;
+};
 
 #endif
