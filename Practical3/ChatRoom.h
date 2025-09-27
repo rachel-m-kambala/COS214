@@ -1,51 +1,38 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
-// #ifndef CHATROOM_H
-// #define CHATROOM_H
-
-// #include <iostream>
-// #include <vector>
-// #include <map>
-// #include <list>
-
-// class ChatRoom {
-//     public:
-//         void registerUser(User user);
-//         void sendMessage(std::string message, User fromUser);
-//         void saveMessage(std::string message, User fromUser);
-//         void removeUser(User user);
-    
-//     private:
-//         Users* user;
-//         std::string* chatHistory;
-// }
-
-// #endif
-
 #ifndef CHATROOM_H
 #define CHATROOM_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include "Users.h"
 
-class User; // forward declaration
+class Iterator;  // forward declaration
 
 class ChatRoom {
 protected:
     std::vector<User*> users;
-    std::vector<std::string> history;
+    std::vector<std::string> chatHistory;
 
 public:
-    virtual ~ChatRoom() {}
+    ChatRoom();
+    virtual ~ChatRoom();
 
     virtual void registerUser(User* user) = 0;
     virtual void removeUser(User* user) = 0;
-    virtual void sendMessage(std::string message, User* fromUser) = 0;
-    virtual void saveMessage(std::string message, User* fromUser) = 0;
 
-    std::vector<std::string> getHistory() { return history; }
+    virtual void sendMessage(const std::string& message, User* fromUser);
+    virtual void saveMessage(const std::string& message, User* fromUser);
+
+    Iterator* createIterator();
+
+    int getUserCount();
+    User* getUserAt(int index);
+
+    int getMessageCount();
+    std::string getMessageAt(int index);
+
+    virtual std::string getName() = 0;
+    void broadcast(const std::string& message, User* fromUser);
+
 };
 
 #endif

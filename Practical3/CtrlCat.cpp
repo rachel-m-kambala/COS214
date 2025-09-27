@@ -1,6 +1,10 @@
 #include "CtrlCat.h"
 #include "Users.h"
 
+CtrlCat::CtrlCat() : ChatRoom() {}
+
+CtrlCat::~CtrlCat() {}
+
 void CtrlCat::registerUser(User* user) {
     users.push_back(user);
 }
@@ -17,11 +21,11 @@ void CtrlCat::removeUser(User* user) {
 void CtrlCat::sendMessage(std::string message, User* fromUser) {
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i] != fromUser) {
-            users[i]->receive(message, fromUser);
+            users[i]->receive(message, fromUser, this);
         }
     }
 }
 
 void CtrlCat::saveMessage(std::string message, User* fromUser) {
-    history.push_back(fromUser->getName() + ": " + message);
+    chatHistory.push_back(fromUser->getName() + ": " + message);
 }

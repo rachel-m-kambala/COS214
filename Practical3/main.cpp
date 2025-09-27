@@ -1,35 +1,99 @@
+#include "ChatRoom.h"
 #include "CtrlCat.h"
 #include "Dogorithm.h"
 #include "Users.h"
+#include "Name1.h"
+#include "Name2.h"
+#include "Name3.h"
+#include "Command.h"
+#include "SendMessageCommand.h"
+#include "SaveMessageCommand.h"
+#include "Iterator.h"
+#include "ChatRoomIterator.h"
+#include <iostream>
 
 int main() {
+    // ----------------------------
+    // Mediator setup
+    // ----------------------------
     CtrlCat ctrlCatRoom;
     Dogorithm dogorithmRoom;
 
-    User alice("Alice");
-    User bob("Bob");
-    User charlie("Charlie");
+    Name1 user1;
+    Name2 user2;
+    Name3 user3;
 
-    alice.joinRoom(&ctrlCatRoom);
-    alice.joinRoom(&dogorithmRoom);
+    // Register users in rooms (Mediator)
+    ctrlCatRoom.registerUser(&user1);
+    ctrlCatRoom.registerUser(&user2);
 
-    bob.joinRoom(&ctrlCatRoom);
-    charlie.joinRoom(&dogorithmRoom);
+    dogorithmRoom.registerUser(&user2);
+    dogorithmRoom.registerUser(&user3);
 
-    alice.send("Hello from Alice!", &ctrlCatRoom);
-    bob.send("Hi Alice!", &ctrlCatRoom);
-    charlie.send("Dogorithm is the best!", &dogorithmRoom);
-    alice.send("I love both cats and dogs!", &dogorithmRoom);
+    std::cout << "--- Testing Mediator Pattern ---\n";
+    user1.send("Hello CtrlCat! (Mediator)", &ctrlCatRoom);
+    user2.send("Hi Name1! (Mediator)", &ctrlCatRoom);
+    user2.send("Hello Dogorithm! (Mediator)", &dogorithmRoom);
+    user3.send("Hey Name2! (Mediator)", &dogorithmRoom);
 
-    std::cout << "\nCtrlCat Room History:\n";
-    for (size_t i = 0; i < ctrlCatRoom.getHistory().size(); i++) {
-        std::cout << ctrlCatRoom.getHistory()[i] << std::endl;
+    // Print chat histories after mediator messages
+    std::cout << "\nCtrlCat Chat History (Mediator):\n";
+    for (int i = 0; i < ctrlCatRoom.getMessageCount(); ++i)
+        std::cout << ctrlCatRoom.getMessageAt(i) << std::endl;
+
+    std::cout << "\nDogorithm Chat History (Mediator):\n";
+    for (int i = 0; i < dogorithmRoom.getMessageCount(); ++i)
+        std::cout << dogorithmRoom.getMessageAt(i) << std::endl;
+
+    // ----------------------------
+    // Command pattern setup
+    // ----------------------------
+    std::cout << "\n--- Testing Command Pattern ---\n";
+    user1.addCommand(new SendMessageCommand(&ctrlCatRoom, &user1, "Hello CtrlCat! (Command)"));
+    user1.addCommand(new SaveMessageCommand(&ctrlCatRoom, &user1, "Hello CtrlCat! (Command)"));
+
+    user2.addCommand(new SendMessageCommand(&ctrlCatRoom, &user2, "Hi Name1! (Command)"));
+    user2.addCommand(new SaveMessageCommand(&ctrlCatRoom, &user2, "Hi Name1! (Command)"));
+
+    user2.addCommand(new SendMessageCommand(&dogorithmRoom, &user2, "Hello Dogorithm! (Command)"));
+    user2.addCommand(new SaveMessageCommand(&dogorithmRoom, &user2, "Hello Dogorithm! (Command)"));
+
+    user3.addCommand(new SendMessageCommand(&dogorithmRoom, &user3, "Hey Name2! (Command)"));
+    user3.addCommand(new SaveMessageCommand(&dogorithmRoom, &user3, "Hey Name2! (Command)"));
+
+    user1.executeAll();
+    user2.executeAll();
+    user3.executeAll();
+
+    // Print chat histories after command messages
+    std::cout << "\nCtrlCat Chat History (Command):\n";
+    for (int i = 0; i < ctrlCatRoom.getMessageCount(); ++i)
+        std::cout << ctrlCatRoom.getMessageAt(i) << std::endl;
+
+    std::cout << "\nDogorithm Chat History (Command):\n";
+    for (int i = 0; i < dogorithmRoom.getMessageCount(); ++i)
+        std::cout << dogorithmRoom.getMessageAt(i) << std::endl;
+
+    // ----------------------------
+    // Iterator pattern test
+    // ----------------------------
+    std::cout << "\n--- Testing Iterator Pattern ---\n";
+
+    Iterator* ctrlCatIterator = ctrlCatRoom.createIterator();
+    std::cout << "Users in CtrlCat:\n";
+    for (ctrlCatIterator->first(); !ctrlCatIterator->isDone(); ctrlCatIterator->next()) {
+        User* u = ctrlCatIterator->currentItem();
+        std::cout << "- " << u->getName() << std::endl;
     }
+    delete ctrlCatIterator;
 
-    std::cout << "\nDogorithm Room History:\n";
-    for (size_t i = 0; i < dogorithmRoom.getHistory().size(); i++) {
-        std::cout << dogorithmRoom.getHistory()[i] << std::endl;
+    Iterator* dogorithmIterator = dogorithmRoom.createIterator();
+    std::cout << "Users in Dogorithm:\n";
+    for (dogorithmIterator->first(); !dogorithmIterator->isDone(); dogorithmIterator->next()) {
+        User* u = dogorithmIterator->currentItem();
+        std::cout << "- " << u->getName() << std::endl;
     }
+    delete dogorithmIterator;
 
     return 0;
 }

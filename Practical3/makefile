@@ -1,25 +1,30 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -std=c++98
+CXXFLAGS = -std=c++17
+
 
 # Executable name
 TARGET = main
-
-# Automatically find all .cpp files in the directory
+# Automatically find all .cpp files
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule
 all: $(TARGET)
 
-# Link objects to create executable
+
+# Link object files to create executable
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-# Compile source to object files
+# Compile each .cpp to .o
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean build files
+# Clean up object files and executable
+
+run: $(TARGET)
+	./$(TARGET)
+
 clean:
 	rm -f $(OBJS) $(TARGET)
