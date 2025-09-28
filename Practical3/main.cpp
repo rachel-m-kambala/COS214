@@ -1,4 +1,4 @@
-#include "ChatRoom.h"
+#include "ChatRoom.h" 
 #include "CtrlCat.h"
 #include "Dogorithm.h"
 #include "Users.h"
@@ -10,12 +10,13 @@
 #include "SaveMessageCommand.h"
 #include "Iterator.h"
 #include "ChatRoomIterator.h"
+#include "OnlineState.h"
+#include "OfflineState.h"
+#include "DoNotDisturbState.h"
 #include <iostream>
 
 int main() {
-    // ----------------------------
-    // Mediator setup
-    // ----------------------------
+    // MEDIATOR DESIGN PATTERN TEST
     CtrlCat ctrlCatRoom;
     Dogorithm dogorithmRoom;
 
@@ -45,9 +46,7 @@ int main() {
     for (int i = 0; i < dogorithmRoom.getMessageCount(); ++i)
         std::cout << dogorithmRoom.getMessageAt(i) << std::endl;
 
-    // ----------------------------
-    // Command pattern setup
-    // ----------------------------
+    // COMMAND DESIGN PATTERN TEST
     std::cout << "\n--- Testing Command Pattern ---\n";
     user1.addCommand(new SendMessageCommand(&ctrlCatRoom, &user1, "Hello CtrlCat! (Command)"));
     user1.addCommand(new SaveMessageCommand(&ctrlCatRoom, &user1, "Hello CtrlCat! (Command)"));
@@ -74,9 +73,8 @@ int main() {
     for (int i = 0; i < dogorithmRoom.getMessageCount(); ++i)
         std::cout << dogorithmRoom.getMessageAt(i) << std::endl;
 
-    // ----------------------------
-    // Iterator pattern test
-    // ----------------------------
+  
+    // ITERATOR DESIGN PATTERN TEST
     std::cout << "\n--- Testing Iterator Pattern ---\n";
 
     Iterator* ctrlCatIterator = ctrlCatRoom.createIterator();
@@ -94,6 +92,29 @@ int main() {
         std::cout << "- " << u->getName() << std::endl;
     }
     delete dogorithmIterator;
+
+    // STATE DESIGN PATTERN TEST
+    std::cout << "\n--- Testing State Pattern ---\n";
+
+    // Create states
+    OnlineState online;
+    OfflineState offline;
+    DoNotDisturbState dnd;
+
+    // Assign states to users
+    user1.setState(&online);
+    user2.setState(&offline);
+    user3.setState(&dnd);
+
+    std::cout << user1.getName() << " state: " << user1.getStateName() << std::endl;
+    std::cout << user2.getName() << " state: " << user2.getStateName() << std::endl;
+    std::cout << user3.getName() << " state: " << user3.getStateName() << std::endl;
+
+    // Test sending messages via state
+    std::cout << "\nState-based sending:\n";
+    user1.sendMessageWithState("Hello everyone from user1 (State)!");
+    user2.sendMessageWithState("Hello everyone from user2 (State)!");
+    user3.sendMessageWithState("Hello everyone from user3 (State)!");
 
     return 0;
 }

@@ -7,12 +7,14 @@
 
 class ChatRoom;
 class Command;
+class UserState;  
 
 class User {
 private:
     std::string name;
     std::vector<ChatRoom*> chatRooms;
     std::vector<Command*> commandQueue;
+    UserState* state;  
 
 public:
     User(std::string name);
@@ -21,12 +23,13 @@ public:
     void joinRoom(ChatRoom* room);
     void send(const std::string& message, ChatRoom* room);
     virtual void receive(const std::string& message, User* fromUser, ChatRoom* room);
-
     void addCommand(Command* command);
     void executeAll();
-
     int getRoomCount();
     ChatRoom* getRoomAt(int index);
+    void setState(UserState* newState);
+    void sendMessageWithState(const std::string& message);
+    std::string getStateName() const;
 };
 
 #endif
