@@ -1,3 +1,12 @@
+/**
+ * @file CtrlCat.cpp
+ * @brief Implementation of the CtrlCat chat room class implementing the Mediator pattern.
+ * @author Jerusha Thaver Mukaji Mweni Rachel Kambala 
+ * @date 28-Sep-2025
+ *
+ * CtrlCat is a concrete chat room that manages its users and chat history.
+ */
+
 #include "CtrlCat.h"
 #include "Users.h"
 
