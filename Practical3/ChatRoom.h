@@ -3,30 +3,7 @@
 
 #include <string>
 #include <vector>
-<<<<<<< HEAD
-#include <map>
-#include <list>
-#include <string>
 
-class User;
-
-class ChatRoom {
-    public:
-        ChatRoom(const std::string& name);
-        virtual ~ChatRoom();
-        const std::string& getName() const;
-        virtual void registerUser(User user);
-        virtual void sendMessage(const std::string message, User fromUser);
-        virtual void saveMessage(const std::string message, User fromUser);
-        virtual void removeUser(User user) = 0;
-        void showHistory() const;
-    
-    private:
-        std::vector<Users*> user;
-        std::vector<std::string*> chatHistory;
-        std::string roomName;
-};
-=======
 #include "Users.h"
 
 class Iterator;  // forward declaration
