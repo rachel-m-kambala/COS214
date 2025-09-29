@@ -1,29 +1,19 @@
+//Jerusha Thaver u23686376
+//Mukaji Mweni Rachel Kambala u23559129
 #ifndef COMMAND_H
 #define COMMAND_H
 
-<<<<<<< HEAD
 #include <iostream>
 #include <vector>
 #include <map>
 #include <list>
 #include <string>
-
-class SendMessageCommand{
-    public:
-        virtual void execute() = 0;
-    
-    protected:
-        ChatRoom room;
-        std::string message;
-        User fromUser;
-};
-=======
-#include <string>
+#include "ChatRoom.h"
+#include "Users.h"
 
 // Forward declarations instead of including headers
 class ChatRoom;
 class User;
->>>>>>> 135be2a25004f5a166d3c49e8b7dff295fc747be
 
 class Command {
 protected:

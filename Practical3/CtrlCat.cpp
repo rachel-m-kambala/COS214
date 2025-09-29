@@ -1,3 +1,5 @@
+//Jerusha Thaver u23686376
+//Mukaji Mweni Rachel Kambala u23559129
 /**
  * @file CtrlCat.cpp
  * @brief Implementation of the CtrlCat chat room class implementing the Mediator pattern.

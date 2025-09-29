@@ -1,3 +1,5 @@
+//Jerusha Thaver u23686376
+//Mukaji Mweni Rachel Kambala u23559129
 #include "ChatRoomIterator.h"
 
 ChatRoomIterator::ChatRoomIterator(ChatRoom* r) {
