@@ -1,5 +1,3 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
 #ifndef DONOTDISTURBSTATE_H
 #define DONOTDISTURBSTATE_H
 

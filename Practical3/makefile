@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++17
 
 
 # Executable name
-TARGET = TestingMain
+TARGET = main
 # Automatically find all .cpp files
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)

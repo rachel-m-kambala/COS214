@@ -1,15 +1,7 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <list>
 #include <string>
-#include "ChatRoom.h"
-#include "Users.h"
 
 // Forward declarations instead of including headers
 class ChatRoom;

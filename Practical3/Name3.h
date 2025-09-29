@@ -1,5 +1,3 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
 #ifndef NAME3_H
 #define NAME3_H
 

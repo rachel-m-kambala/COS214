@@ -1,5 +1,3 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
 #ifndef SAVEMESSAGECOMMAND_H
 #define SAVEMESSAGECOMMAND_H
 

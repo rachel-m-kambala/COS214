@@ -1,14 +1,11 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
 #ifndef CHATROOM_H
 #define CHATROOM_H
 
 #include <string>
 #include <vector>
-
 #include "Users.h"
 
-class Iterator;  
+class Iterator;  // forward declaration
 
 class ChatRoom {
 protected:
