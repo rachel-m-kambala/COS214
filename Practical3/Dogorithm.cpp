@@ -1,6 +1,10 @@
 #include "Dogorithm.h"
 #include "Users.h"
 
+Dogorithm::Dogorithm() : ChatRoom() {}
+
+Dogorithm::~Dogorithm() {}
+
 void Dogorithm::registerUser(User* user) {
     users.push_back(user);
 }
@@ -17,11 +21,11 @@ void Dogorithm::removeUser(User* user) {
 void Dogorithm::sendMessage(std::string message, User* fromUser) {
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i] != fromUser) {
-            users[i]->receive(message, fromUser);
+            users[i]->receive(message, fromUser, this); 
         }
     }
 }
 
 void Dogorithm::saveMessage(std::string message, User* fromUser) {
-    history.push_back(fromUser->getName() + ": " + message);
+    chatHistory.push_back(fromUser->getName() + ": " + message); 
 }

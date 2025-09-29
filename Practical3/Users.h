@@ -1,32 +1,20 @@
 #ifndef USERS_H
 #define USERS_H
 
-#include <iostream>
 #include <string>
 #include <vector>
-#include "Command.h"
+#include <iostream>
 
-<<<<<<< HEAD
-class Users{
-    public:
-        void send(std::string message, ChatRoom room);
-        void receive(std::string meesage, Users fromUser, ChatRoom room);
-        void addCommand(Command command);
-        void executeAll();
-    
-    protected:
-        ChatRoom* chatRooms;
-        std::string name;
-        Command* commandQueue;
-};
-=======
-class ChatRoom; // forward declaration
->>>>>>> 135be2a25004f5a166d3c49e8b7dff295fc747be
+class ChatRoom;
+class Command;
+class UserState;  
 
 class User {
 private:
     std::string name;
+    std::vector<ChatRoom*> chatRooms;
     std::vector<Command*> commandQueue;
+    UserState* state;  
 
 public:
     User(std::string name);
@@ -34,10 +22,14 @@ public:
     std::string getName() const;
     void joinRoom(ChatRoom* room);
     void send(const std::string& message, ChatRoom* room);
-    void receive(const std::string& message, User* fromUser);
-
+    virtual void receive(const std::string& message, User* fromUser, ChatRoom* room);
     void addCommand(Command* command);
     void executeAll();
+    int getRoomCount();
+    ChatRoom* getRoomAt(int index);
+    void setState(UserState* newState);
+    void sendMessageWithState(const std::string& message);
+    std::string getStateName() const;
 };
 
 #endif
