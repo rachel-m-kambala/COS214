@@ -1,5 +1,20 @@
-//Jerusha Thaver u23686376
-//Mukaji Mweni Rachel Kambala u23559129
+/**
+ * @file main.cpp
+ * @brief Tests the Mediator, Command, Iterator, and State design patterns using chat rooms and users.
+ *
+ * This program sets up two chat rooms (CtrlCat and Dogorithm) and three users (Name1, Name2, Name3).
+ * It demonstrates:
+ *  - Mediator Pattern: Users send messages via chat rooms without direct communication.
+ *  - Command Pattern: Users queue commands to send and save messages in chat rooms.
+ *  - Iterator Pattern: Iterating through users in a chat room.
+ *  - State Pattern: Users have states (Online, Offline, DoNotDisturb) that affect message sending behavior.
+ *
+ * @authors
+ *  - Jerusha Thaver (u23686376)
+ *  - Mukaji Mweni Rachel Kambala (u23559129)
+ * @date 28-Sep-2025
+ */
+
 #include "ChatRoom.h" 
 #include "CtrlCat.h"
 #include "Dogorithm.h"
@@ -17,6 +32,14 @@
 #include "DoNotDisturbState.h"
 #include <iostream>
 
+/**
+ * @brief Entry point of the program.
+ *
+ * Sets up the chat rooms and users, tests all four design patterns, and prints chat histories
+ * and state-based message behavior.
+ *
+ * @return int Returns 0 upon successful execution.
+ */
 int main() {
     // MEDIATOR DESIGN PATTERN TEST
     CtrlCat ctrlCatRoom;
@@ -75,7 +98,6 @@ int main() {
     for (int i = 0; i < dogorithmRoom.getMessageCount(); ++i)
         std::cout << dogorithmRoom.getMessageAt(i) << std::endl;
 
-  
     // ITERATOR DESIGN PATTERN TEST
     std::cout << "\n--- Testing Iterator Pattern ---\n";
 
